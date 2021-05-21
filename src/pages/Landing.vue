@@ -3,23 +3,15 @@
     <div class="page-header page-header-small">
       <parallax
         class="page-header-image"
-        style="background-image: url('img/bg6.jpg')"
+        style="background-image: url('https://wallpaperaccess.com/full/85869.jpg')"
       >
       </parallax>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">This is our great company.</h1>
-          <div class="text-center">
-            <a href="#pablo" class="btn btn-primary btn-icon btn-round">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="#pablo" class="btn btn-primary btn-icon btn-round">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#pablo" class="btn btn-primary btn-icon btn-round">
-              <i class="fab fa-google-plus"></i>
-            </a>
-          </div>
+          <h2 class="title">당신에게 꼭 맞는 찰떡같은 집</h2>
+          <h1 class="title">찰떡하우스</h1>
+            
+          
         </div>
       </div>
     </div>
@@ -27,77 +19,105 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto text-center">
-            <h2 class="title">Who we are?</h2>
-            <h5 class="description">
-              According to the National Oceanic and Atmospheric Administration,
-              Ted, Scambos, NSIDClead scentist, puts the potentially record low
-              maximum sea ice extent tihs year down to low ice extent in the
-              Pacific and a late drop in ice extent in the Barents Sea.
-            </h5>
+            <h2 class="title">오늘도 집을 찾는 당신에게 가장 확실한 방법을 제시합니다.</h2>
+            <h5 class="description"> 우리에겐 당신을 현혹시키는 그 어떤 사진도 없습니다.</h5>
+            <h5 class="description"> 당신이 할 일은 오로지 설문조사 한 가지 입니다.</h5>
           </div>
         </div>
         <div class="separator separator-primary"></div>
         <div class="section-story-overview">
+
           <div class="row">
             <div class="col-md-6">
               <div
-                class="image-container image-left"
-                style="background-image: url('img/login.jpg')"
-              >
-                <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">
-                  "Over the span of the satellite record, Arctic sea ice has
-                  been declining significantly, while sea ice in the
-                  Antarctichas increased very slightly"
-                  <br />
-                  <br />
-                  <small>-NOAA</small>
-                </p>
-              </div>
-              <!-- Second image on the left side of the article -->
-              <div
-                class="image-container"
-                style="background-image: url('img/bg3.jpg')"
+                class="image-container image-right"
+                style="background-image: url('https://cuttingedgepr.com/wp-content/uploads/2015/02/Survey-online.-Illustration-with-two-characters-annoting-page-on-laptop.jpg')"
               ></div>
             </div>
-            <div class="col-md-5">
-              <!-- First image on the right side, above the article -->
-              <div
-                class="image-container image-right"
-                style="background-image: url('img/bg1.jpg')"
-              ></div>
-              <h3>
-                So what does the new record for the lowest level of winter ice
-                actually mean
+            <div class="col-md-6">
+              <br><br><br><br><br><br><br><br>
+              <h3 style="font-weight: 900;">
+                1. 설문조사를 시작하세요
               </h3>
-              <p>
-                The Arctic Ocean freezes every winter and much of the sea-ice
-                then thaws every summer, and that process will continue whatever
-                happens with climate change. Even if the Arctic continues to be
-                one of the fastest-warming regions of the world, it will always
-                be plunged into bitterly cold polar dark every winter. And
-                year-by-year, for all kinds of natural reasons, there’s huge
-                variety of the state of the ice.
-              </p>
-              <p>
-                For a start, it does not automatically follow that a record
-                amount of ice will melt this summer. More important for
-                determining the size of the annual thaw is the state of the
-                weather as the midnight sun approaches and temperatures rise.
-                But over the more than 30 years of satellite records, scientists
-                have observed a clear pattern of decline, decade-by-decade.
-              </p>
-              <p>
-                The Arctic Ocean freezes every winter and much of the sea-ice
-                then thaws every summer, and that process will continue whatever
-                happens with climate change. Even if the Arctic continues to be
-                one of the fastest-warming regions of the world, it will always
-                be plunged into bitterly cold polar dark every winter. And
-                year-by-year, for all kinds of natural reasons, there’s huge
-                variety of the state of the ice.
+              <p style="font-size: 20px;">
+                당신의 선호도, 라이프스타일, 직업 그리고 예산에 관한 몇가지 질문에 답해 줌으로써, 우리는 당신에 대해서 더 잘 알게 될것입니다.
               </p>
             </div>
           </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="image-container image-right"
+                style="background-image: url('https://img.freepik.com/free-vector/bank-credit-finance-management-loan-agreement-signing-mortgage-money-credit_335657-3136.jpg?size=626&ext=jpg&ga=GA1.2.1900896317.1620432000')"
+              ></div>
+            </div>
+            <div class="col-md-6">
+              <br><br><br><br><br><br><br><br>
+              <h3 style="font-weight: 900;">
+                2. 다양한 주거복지제도를 살펴보세요
+              </h3>
+              <p style="font-size: 20px;">
+                우리는 당신만 생각하며 당신에게 알맞은 복지제도를 큐레이션 할 것입니다. 더 이상 해당사항이 없는 금융상품 등을 찾는데에 시간을 허비하지 마세요
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="image-container image-right"
+                style="background-image: url('https://image.freepik.com/free-vector/real-estate-searching-illustration_23-2148675411.jpg')"
+              ></div>
+            </div>
+             <div class="col-md-6">
+              <br><br><br><br><br><br><br><br>
+              <h3 style="font-weight: 900;">
+                3. 원하는 지역의 매물들을 살펴보세요
+              </h3>
+              <p style="font-size: 20px;">
+                원하는 집을 찾기 위한 맞춤검색을 제공합니다. 가격, 구조, 층수등 상세 정보는 물론 역세권, 학세권, 숲세권까지 지도에서 매물정보를 한눈에 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="image-container image-right"
+                style="background-image: url('https://image.freepik.com/free-vector/person-broadcasting-live-event-illustration_23-2148520861.jpg')"
+              ></div>
+            </div>
+             <div class="col-md-6">
+              <br><br><br><br><br><br><br><br>
+              <h3 style="font-weight: 900;">
+                4. 마음에 드는 집은 실시간으로!
+              </h3>
+              <p style="font-size: 20px;">
+                먼 곳까지 발품팔아 확인하러 갈 필요가 없습니다! 집주인과 시간만 맞춘다면 부동산 없이 마음 편하게 아무때나 실시간으로 매물을 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="image-container image-right"
+                style="background-image: url('https://cdn4.vectorstock.com/i/1000x1000/64/68/graphic-cartoon-character-qna-vector-35356468.jpg')"
+              ></div>
+            </div>
+             <div class="col-md-6">
+              <br><br><br><br><br><br><br><br>
+              <h3 style="font-weight: 900;">
+                5. 더 궁금하신 점이 있다면?
+              </h3>
+              <p style="font-size: 20px;">
+                언제든지 궁금하신 사항이 생긴다면 자주하는 질문 게시판을 방문해주세요. 자주 묻는 질문들을 친절하게 정리해 놓았습니다.
+              </p>
+            </div>
+          </div>
+        <br><br><br><br><br><br><br><br>
+        <div>
+          <n-button type="primary" round block size="lg" style="font-size : 30px;" >시작하기</n-button>
+        </div>
         </div>
       </div>
     </div>
@@ -106,124 +126,45 @@
         <h2 class="title">Here is our team</h2>
         <div class="team">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="team-player">
                 <img
                   src="img/avatar.jpg"
                   alt="Thumbnail Image"
                   class="rounded-circle img-fluid img-raised"
                 />
-                <h4 class="title">Romina Hadid</h4>
-                <p class="category text-primary">Model</p>
+                <h4 class="title">최승재</h4>
+                <p class="category text-primary">Fullstack Developer</p>
                 <p class="description">
                   You can write here details about one of your team members. You
                   can give more details about what they do. Feel free to add
                   some <a href="#">links</a> for people to be able to follow
                   them outside the site.
                 </p>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-facebook-square"></i
-                ></a>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="team-player">
                 <img
                   src="img/ryan.jpg"
                   alt="Thumbnail Image"
                   class="rounded-circle img-fluid img-raised"
                 />
-                <h4 class="title">Ryan Tompson</h4>
-                <p class="category text-primary">Designer</p>
+                <h4 class="title">하태린</h4>
+                <p class="category text-primary">Fullstack Developer</p>
                 <p class="description">
                   You can write here details about one of your team members. You
                   can give more details about what they do. Feel free to add
                   some <a href="#">links</a> for people to be able to follow
                   them outside the site.
                 </p>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-linkedin"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="team-player">
-                <img
-                  src="img/eva.jpg"
-                  alt="Thumbnail Image"
-                  class="rounded-circle img-fluid img-raised"
-                />
-                <h4 class="title">Eva Jenner</h4>
-                <p class="category text-primary">Fashion</p>
-                <p class="description">
-                  You can write here details about one of your team members. You
-                  can give more details about what they do. Feel free to add
-                  some <a href="#">links</a> for people to be able to follow
-                  them outside the site.
-                </p>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-google-plus"></i
-                ></a>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-                <a href="#pablo" class="btn btn-primary btn-icon btn-round"
-                  ><i class="fab fa-twitter"></i
-                ></a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="section section-contact-us text-center">
-      <div class="container">
-        <h2 class="title">Want to work with us?</h2>
-        <p class="description">Your project is very important to us.</p>
-        <div class="row">
-          <div class="col-lg-6 text-center ml-auto mr-auto col-md-8">
-            <fg-input
-              class="input-lg"
-              placeholder="First Name..."
-              v-model="form.firstName"
-              addon-left-icon="now-ui-icons users_circle-08"
-            >
-            </fg-input>
-            <fg-input
-              class="input-lg"
-              placeholder="Email Here..."
-              v-model="form.email"
-              addon-left-icon="now-ui-icons ui-1_email-85"
-            >
-            </fg-input>
-            <div class="textarea-container">
-              <textarea
-                class="form-control"
-                name="name"
-                rows="4"
-                cols="80"
-                v-model="form.message"
-                placeholder="Type a message..."
-              ></textarea>
-            </div>
-            <div class="send-button">
-              <n-button type="primary" round block size="lg"
-                >Send Message</n-button
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </template>
 <script>
