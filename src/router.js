@@ -44,7 +44,10 @@ export default new Router({
     {
       path: '/map',
       name: 'map',
-      components: { default: Map, header: MapNavbar },
+      components: {
+        default: Map,
+        //header: MapNavbar
+      },
       props: {
         header: { colorOnScroll: 400 },
       },
@@ -55,8 +58,8 @@ export default new Router({
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' }
-      }
+        footer: { backgroundColor: 'black' },
+      },
     },
     {
       path: '/likes',
@@ -64,8 +67,8 @@ export default new Router({
       components: { default: Likes, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' }
-      }
+        footer: { backgroundColor: 'black' },
+      },
     },
     {
       path: '/mypage',
@@ -73,9 +76,9 @@ export default new Router({
       components: { default: MyPage, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' }
-      }
-    }
+        footer: { backgroundColor: 'black' },
+      },
+    },
   ],
   scrollBehavior: (to) => {
     if (to.hash) {

@@ -21,10 +21,10 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('getAllHouseDeal');
+    //    this.$store.dispatch('getAllHouseDeal');
   },
   mounted() {
-    window.kakao && window.kakao.maps ? this.initMap() : this.addScript();
+    //    window.kakao && window.kakao.maps ? this.initMap() : this.addScript();
   },
   methods: {
     initMap() {

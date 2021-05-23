@@ -19,11 +19,34 @@ export default new Vuex.Store({
   },
   actions: {
     getAllHouseDeal({ commit }) {
-      axios
-        .get(addr + '/house/search/서울')
+      return axios
+        .get(addr + '/house')
         .then((response) => {
-          console.log(response.data);
-          commit('GET_ALL_HOUSE_DEAL', response.data);
+          //          console.log(response.data);
+          commit('GET_HOUSE_DEAL', response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    searchHouseDeal({ commit }, searchtext) {
+      console.log(searchtext);
+      let words = searchtext.split(' ');
+      console.log(words);
+      let searchaddr = addr + '/house/search?';
+      for (let i = 0; i < words.length; i++) {
+        searchaddr += 'word' + words[i];
+        if (i != words.legnth - 1) {
+          searchaddr += '&';
+        }
+      }
+      return axios
+        .get(addr + '/house/search?word=' + searchtext)
+        .then((response) => {
+          //   console.log(response.data);
+          //          console.log(response.data);
+          commit('GET_HOUSE_DEAL', response.data);
+          return { Result: 'ok' };
         })
         .catch((error) => {
           console.log(error);
@@ -31,9 +54,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    GET_ALL_HOUSE_DEAL(state, data) {
+    GET_HOUSE_DEAL(state, data) {
       state.housedeal = data;
-      console.log('mutations', state.housedeal);
+      //      console.log('mutations', state.housedeal);
     },
   },
   modeuls: {},
