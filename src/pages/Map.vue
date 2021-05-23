@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <b-button v-b-toggle.sidebar-1>Toggle Sidebar</b-button>
-      <b-sidebar id="sidebar-1" title="Sidebar" shadow>
+      <b-button v-b-toggle.sidebar-1 id="searchBar">Search</b-button>
+      <b-sidebar id="sidebar-1" title="검색" shadow v-model="lsidebar">
         <div class="px-3 py-2">
           <p>
             <b-input-group size="sm" class="mb-2">
@@ -11,9 +11,9 @@
               </b-input-group-prepend>
               <b-form-input
                 type="search"
-                placeholder="Search terms"
+                placeholder="Search text"
                 v-model="searchtext"
-                @keyup:enter="searchHouseDeals"
+                @keyup.enter="searchHouseDeals"
               ></b-form-input>
             </b-input-group>
             <button @click="searchHouseDeals">검색</button>
@@ -21,7 +21,33 @@
         </div>
       </b-sidebar>
     </div>
-    <div style="width:100%; height:100vh;">
+    <div>
+      <div style="display:none;">
+        <b-button v-b-toggle.sidebar-right id="houseDealResult">Toggle Sidebar</b-button>
+      </div>
+      <b-sidebar id="sidebar-right" title="결과" right shadow v-model="rsidebar">
+        <div class="px-3 py-2">
+          <p>
+            <b-container>
+              <b-row v-for="(housedeal, index) in housedeals" :key="index">
+                <div>
+                  <b-card>
+                    <div>아파트 이름 : {{ housedeal.aptname }}</div>
+                    <div>계약년월일: {{ housedeal.dealyearmonth }}{{ housedeal.dealday }}</div>
+                    <div>시도군 : {{ housedeal.sidogun }}</div>
+                    <div>도로명 : {{ housedeal.roadname }}</div>
+                    <div v-if="housedeal.type == 1">아파트(매매)</div>
+                    <div v-else-if="housedeal.type == 2">연립다세대(매매)</div>
+                    <div v-else-if="housedeal.type == 3">오피스텔(매매)</div>
+                  </b-card>
+                </div>
+              </b-row>
+            </b-container>
+          </p>
+        </div>
+      </b-sidebar>
+    </div>
+    <div style="width:100%; height:90vh;">
       <div id="map" style="width: 100%; height: 100%"></div>
     </div>
   </div>
@@ -36,6 +62,8 @@ export default {
       housedeals: '',
       searchtext: '',
       map: '',
+      rsidebar: false,
+      lsidebar: false,
     };
   },
   created() {
@@ -64,7 +92,7 @@ export default {
         lng = this.housedeals[0].lng;
       }
       this.map.setCenter(new kakao.maps.LatLng(lat, lng));
-      for (let i = 0; i < Math.min(this.housedeals.length, 5); i++) {
+      for (let i = 0; i < this.housedeals.length; i++) {
         console.log(this.housedeals[i]);
         marker.push(
           new kakao.maps.Marker({
@@ -125,6 +153,10 @@ export default {
       if (result) {
         _this.housedeals = _this.$store.getters.housedeals;
         _this.pointMaker();
+        //  document.querySelector('#sidebar-right').style.display = '';
+        //  document.querySelector('#sidebar-1').style.display = 'none';
+        this.rsidebar = true;
+        this.lsidebar = false;
       } else {
         console.log('에러');
       }

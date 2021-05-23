@@ -1,9 +1,6 @@
 <template>
   <div class="page-header clear-filter" filter-color="orange">
-    <div
-      class="page-header-image"
-      style="background-image: url('img/login.jpg')"
-    ></div>
+    <div class="page-header-image" style="background-image: url('img/login.jpg')"></div>
     <div class="content">
       <div class="container">
         <div class="col-md-5 ml-auto mr-auto">
@@ -15,24 +12,22 @@
             <fg-input
               class="no-border input-lg"
               addon-left-icon="now-ui-icons users_circle-08"
-              placeholder="First Name..."
+              placeholder="id"
+              v-model="id"
             >
             </fg-input>
 
             <fg-input
               class="no-border input-lg"
               addon-left-icon="now-ui-icons text_caps-small"
-              placeholder="Last Name..."
+              placeholder="pwd"
+              v-model="pwd"
             >
             </fg-input>
 
             <template slot="raw-content">
               <div class="card-footer text-center">
-                <a
-                  href="#pablo"
-                  class="btn btn-primary btn-round btn-lg btn-block"
-                  >Get Started</a
-                >
+                <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block" @click="login">Get Started</a>
               </div>
               <div class="pull-left">
                 <h6>
@@ -58,12 +53,31 @@ import MainFooter from '@/layout/MainFooter';
 export default {
   name: 'login-page',
   bodyClass: 'login-page',
+  data() {
+    return {
+      id: '',
+      pwd: '',
+    };
+  },
   components: {
     Card,
     MainFooter,
     [Button.name]: Button,
-    [FormGroupInput.name]: FormGroupInput
-  }
+    [FormGroupInput.name]: FormGroupInput,
+  },
+  methods: {
+    async login() {
+      var _this = this;
+      let result = await this.$store.dispatch('login', { id: this.id, pwd: this.pwd });
+      if (result) {
+        alert('로그인 성공');
+        alert(result);
+        alert(_this.$store.getters.user.id);
+      } else {
+        alert('에러');
+      }
+    },
+  },
 };
 </script>
 <style></style>
