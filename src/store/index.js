@@ -20,9 +20,9 @@ export default new Vuex.Store({
   actions: {
     getAllHouseDeal({ commit }) {
       axios
-        .get(addr + '/house')
+        .get(addr + '/house/search/서울')
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           commit('GET_ALL_HOUSE_DEAL', response.data);
         })
         .catch((error) => {
@@ -33,6 +33,7 @@ export default new Vuex.Store({
   mutations: {
     GET_ALL_HOUSE_DEAL(state, data) {
       state.housedeal = data;
+      console.log('mutations', state.housedeal);
     },
   },
   modeuls: {},

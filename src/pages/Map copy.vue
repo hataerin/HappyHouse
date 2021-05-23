@@ -7,16 +7,24 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      housedeals: '',
-    };
+  computed: {
+    housedeals() {
+      console.log('asd'); // promise
+      /*   console.log(this.$store.getters.housedeals);
+      for (let i = 0; i < this.$store.getters.housedeals.length / 10; i++) {
+        marker = new kakao.maps.Marker(this.$store.getters.housedeals[i].lat, this.$store.getters.housedeals[i].lng);
+        console.log(this.$store.getters.housedeals[i]);
+        marker.setMap(map);
+      }*/
+      //this.$store.state.housedeal
+      return this.$store.getters.housedeals;
+    },
   },
   created() {
     this.$store.dispatch('getAllHouseDeal');
   },
   mounted() {
-    this.makeMap();
+    window.kakao && window.kakao.maps ? this.initMap() : this.addScript();
   },
   methods: {
     initMap() {
@@ -24,15 +32,7 @@ export default {
       var options = { center: new kakao.maps.LatLng(37.7615193, 128.8679689), level: 12 };
       var map = new kakao.maps.Map(container, options); //마커추가하려면 객체를 아래와 같이 하나 만든다.
       //  new kakao.maps.Map(container);
-      for (let i = 0; i < this.housedeals.length; i++) {
-        console.log(this.housedeals[i]);
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(this.housedeals[i].lat, this.housedeals[i].lng),
-          title: this.housedeals[i].aptname,
-        });
-      }
-      //      var marker = new kakao.maps.Marker({ position: map.getCenter() });
+      var marker = new kakao.maps.Marker({ position: map.getCenter() });
       marker.setMap(map);
     },
     addScript() {
@@ -40,15 +40,6 @@ export default {
       script.onload = () => kakao.maps.load(this.initMap);
       script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=29c19b3dda898f4062f070cabd9f2ab1';
       document.head.appendChild(script);
-    },
-    makeMap() {
-      var _this = this;
-      return new Promise(function(resolve) {
-        _this.$store.dispatch('getAllHouseDeal').then(function() {
-          _this.housedeals = _this.$store.getters.housedeals;
-          window.kakao && window.kakao.maps ? _this.initMap() : _this.addScript();
-        });
-      });
     },
   },
 };
