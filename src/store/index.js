@@ -4,7 +4,6 @@ import axios from 'axios';
 //import createPersistedState from 'vuex-persistedstate';
 
 const addr = 'http://localhost/rest';
-
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -26,16 +25,37 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    getSession(context) {
+      axios.defaults.headers.common['auth-token'] = sessionStorage.getItem('accessToken');
+      console.log('getSession');
+      console.dir(sessionStorage.getItem('user'));
+      console.log(sessionStorage.getItem('accessToken'));
+      return axios
+        .get(addr + '/member/info')
+        .then((response) => {
+          console.log(response);
+          context.commit('GET_SESSION');
+        })
+        .catch(() => {
+          //  return this.$store.logout();
+        });
+    },
     login(context, user) {
       return axios.post(`${addr}/member/login`, user).then(({ data }) => {
         context.commit('LOGIN', data);
         axios.defaults.headers.common['auth-token'] = `${data['auth-token']}`;
-        return { Result: 'ok' };
+        return this.state.user;
       });
     },
     logout(context) {
       context.commit('LOGOUT');
       axios.defaults.headers.common['auth-token'] = undefined;
+    },
+    addUser(context, user) {
+      return axios.post(`${addr}/member`, user).then((response) => {
+        console.log(response);
+        return { Result: 'ok' };
+      });
     },
     getAllHouseDeal({ commit }) {
       return axios
@@ -74,6 +94,13 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    GET_SESSION(state) {
+      state.user = sessionStorage.getItem('user');
+      state.accessToken = sessionStorage.getItem('accessToken');
+      console.log('-------------------------------');
+      console.log(state.user);
+      console.log(state.accessToken);
+    },
     GET_HOUSE_DEAL(state, data) {
       state.housedeal = data;
       //      console.log('mutations', state.housedeal);
@@ -81,10 +108,14 @@ export default new Vuex.Store({
     LOGIN(state, payload) {
       state.accessToken = payload['auth-token'];
       state.user = payload['user'];
+      sessionStorage.setItem('user', payload['user']);
+      sessionStorage.setItem('accessToken', payload['auth-token']);
     },
     LOGOUT(state) {
       state.accessToken = null;
       state.user = '';
+      sessionStorage.removeItem('user');
+      sessionStorage.removeItem('accessToken');
     },
   },
   modeuls: {},

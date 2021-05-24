@@ -158,6 +158,7 @@ export default {
   bodyClass: 'profile-page',
   computed: {
     user() {
+      console.log(this.$store.getters.user);
       return this.$store.getters.user;
     },
   },
@@ -172,7 +173,7 @@ export default {
       .catch(() => {
         this.$store.dispatch('logout').then(() => {
           alert('로그인 후 사용하세요.');
-          this.$router.replace('/');
+          this.$router.replace('/login');
           //     this.$router.push({ path: '/' });
         });
       });

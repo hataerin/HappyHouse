@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Index from './pages/Index.vue';
 import Landing from './pages/Landing.vue';
+import signup from './pages/signup.vue';
 import Login from './pages/Login.vue';
 import Profile from './pages/Profile.vue';
 import MyPage from './pages/MyPage.vue';
@@ -16,6 +17,15 @@ export default new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
+    {
+      path: '/signup',
+      name: 'signup',
+      components: { default: signup, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
     {
       path: '/',
       name: 'index',

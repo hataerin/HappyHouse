@@ -8,5 +8,10 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  mounted() {
+    //   console.log('asd');
+    this.$store.dispatch('getSession');
+  },
+};
 </script>
