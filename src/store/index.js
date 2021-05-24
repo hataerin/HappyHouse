@@ -25,6 +25,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    deleteMember(context, id) {
+      return axios
+        .delete(`${addr}/member/` + id)
+        .then((response) => {
+          //     context.commit('');
+          return { Result: 'ok' };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    updateMemberInfo(context, user) {
+      return axios.put(`${addr}/member`, user).then((response) => {
+        context.commit('UPDATE_MEMBER_INFO', user);
+        console.log(response);
+        return { Result: 'ok' };
+      });
+    },
     getSession(context) {
       axios.defaults.headers.common['auth-token'] = sessionStorage.getItem('accessToken');
       console.log('getSession');
@@ -54,7 +72,7 @@ export default new Vuex.Store({
     },
     addUser(context, user) {
       return axios.post(`${addr}/member`, user).then((response) => {
-        console.log(response);
+        //    console.log(response);
         return { Result: 'ok' };
       });
     },
@@ -115,8 +133,18 @@ export default new Vuex.Store({
     LOGOUT(state) {
       state.accessToken = null;
       state.user = '';
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('accessToken');
+      //      sessionStorage.removeItem('user');
+      //      sessionStorage.removeItem('accessToken');
+    },
+    UPDATE_MEMBER_INFO(state, user) {
+      state.user.age = user.age;
+      state.user.pwd = user.pwd;
+      state.user.eamil = user.email;
+      state.user.nickname = user.nickname;
+      state.user.mbti = user.mbti;
+      state.user.job = user.job;
+      state.user.sex = user.sex;
+      console.log('UPDATE_MEMBER_INFO:', state.user);
     },
   },
   modeuls: {},

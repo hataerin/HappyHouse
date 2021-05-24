@@ -95,7 +95,10 @@ export default {
     logout() {
       //logout
       let result = this.$store.dispatch('logout');
-      if (result) alert('로그아웃');
+      if (result) {
+        alert('로그아웃');
+        this.$router.push({ path: '/' });
+      }
     },
   },
 };
