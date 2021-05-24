@@ -159,7 +159,6 @@ export default {
   bodyClass: 'profile-page',
   computed: {
     user() {
-      console.log(this.$store.getters.user);
       return this.$store.getters.user;
     },
   },
@@ -184,7 +183,12 @@ export default {
       this.$router.replace('/changeInfo');
     },
     deleteMember() {
-      this.$router.replace('/');
+      // let result = this.$store.dispatch('deleteMember', this.user.id);
+      //    let result = 1;
+      if (result) {
+        alert('회원탈퇴 완료');
+        this.$router.replace('/');
+      }
     },
   },
 };

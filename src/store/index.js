@@ -25,6 +25,13 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    deleteMember(context, id) {
+      return axios.delete(`${addr}/member`, id).then((response) => {
+        //  context.commit('LOGOUT');
+        console.log(response);
+        return { Result: 'ok' };
+      });
+    },
     updateMemberInfo(context, user) {
       return axios.put(`${addr}/member`, user).then((response) => {
         context.commit('UPDATE_MEMBER_INFO', user);
@@ -61,7 +68,7 @@ export default new Vuex.Store({
     },
     addUser(context, user) {
       return axios.post(`${addr}/member`, user).then((response) => {
-        console.log(response);
+        //    console.log(response);
         return { Result: 'ok' };
       });
     },
@@ -122,8 +129,8 @@ export default new Vuex.Store({
     LOGOUT(state) {
       state.accessToken = null;
       state.user = '';
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('accessToken');
+      //      sessionStorage.removeItem('user');
+      //      sessionStorage.removeItem('accessToken');
     },
     UPDATE_MEMBER_INFO(state, user) {
       state.user.age = user.age;
