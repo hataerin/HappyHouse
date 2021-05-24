@@ -14,6 +14,8 @@ import MapNavbar from './layout/MapNavbar.vue';
 //import { ElNotificationComponent } from 'element-ui/types/notification';
 import Notice from './pages/Notice.vue';
 import ChangeInfo from './pages/ChangeInfo.vue';
+import Qna from './pages/QnA.vue';
+import NoticeDetail from './pages/NoticeDetail.vue';
 
 Vue.use(Router);
 
@@ -21,6 +23,24 @@ export default new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
+    {
+      path: '/noticedetail/:noticeno',
+      name: 'noticetail',
+      components: { default: NoticeDetail, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: '/qna',
+      name: 'qna',
+      components: { default: Qna, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
     {
       path: '/signup',
       name: 'signup',
