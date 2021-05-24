@@ -15,7 +15,7 @@
     <!------------------------------------------------------->
     <div style="margin-top:40px;">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2>공지 사항</h2>
+        <h2>QnA</h2>
         <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
       </div>
     </div>
@@ -56,7 +56,7 @@
 <script>
 // import { Button, FormGroupInput } from '@/components';
 import axios from 'axios';
-const addr = 'http://localhost/rest/notice';
+const addr = 'http://localhost/rest/qna';
 export default {
   data() {
     return {
@@ -72,7 +72,7 @@ export default {
         for (let i = 0; i < response.data.length; i++) {
           console.log('asd');
           _this.items.push({
-            no: response.data[i].noticeno,
+            no: response.data[i].qnano,
             title: response.data[i].subject,
             author: response.data[i].userid,
           });
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     goDetailNotice(item) {
-      this.$router.push({ path: '/noticeDetail/' + item.no });
+      this.$router.push({ path: '/qnaDetail/' + item.no });
     },
   },
 };

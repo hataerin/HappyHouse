@@ -71,12 +71,11 @@
         <h5 class="description">
           나이, 소득 등 당신에 관한 몇가지 질문에 답하고 맞춤 주거복지 서비스를 찾아보세요
         </h5>
-        <div class="col-md-8 ml-auto mr-auto text-center">
+        <div class="ml-auto mr-auto text-center">
           <div class="col">
-            <fg-input class="col-sm-6 col-1" label="나이(만)" placeholder="나이를 입력해주세요" v-model="age" type="search">
+            <fg-input label="나이(만)" placeholder="나이를 입력해주세요" v-model="age" type="search">
             </fg-input>
             <fg-input
-              class="col-sm-6 col-1"
               label="연소득(만원)"
               placeholder="기혼의 경우 부부합산 연소득을 입력해주세요"
               v-model="income"
@@ -84,7 +83,6 @@
             >
             </fg-input>
             <fg-input
-              class="col-sm-6 col-1"
               label="순자산가액(억)"
               placeholder="예) 5억4천만원 -> 5.4"
               v-model="asset"
@@ -92,7 +90,7 @@
             >
             </fg-input>
             <div>
-              <div class="col-6">
+              <div>
                 <drop-down>
                   <n-button
                     slot="title"
@@ -120,6 +118,7 @@
 
 
     <template v-for="loan of loanData">
+    <div class="ml-auto mr-auto text-center" :key="loan.name">
       <card v-bind:key="loan.id" style="width: 30rem;">
         <img
           slot="image"
@@ -138,7 +137,7 @@
           {{loan.term}} <br /><n-button type="primary"><a v-bind:href="loan.url">자세히 보기</a></n-button>
         </div>
       </card>
-    </template>    
+    </div>
   </div>
 </template>
 
