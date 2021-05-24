@@ -14,6 +14,9 @@ import MapNavbar from './layout/MapNavbar.vue';
 //import { ElNotificationComponent } from 'element-ui/types/notification';
 import Notice from './pages/Notice.vue';
 import ChangeInfo from './pages/ChangeInfo.vue';
+import VideoChat from './pages/VideoChat.vue';
+import VideoLogin from './pages/auth/Login.vue';
+
 import Qna from './pages/QnA.vue';
 import NoticeDetail from './pages/NoticeDetail.vue';
 import QnaDetail from './pages/QnaDetail.vue';
@@ -151,6 +154,24 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
+    // {
+    //   path: '/videoChat',
+    //   name: 'videoChat',
+    //   components: { default: VideoChat, header: MainNavbar, footer: MainFooter },
+    //   props: {
+    //     header: { colorOnScroll: 400 },
+    //     footer: { backgroundColor: 'black' },
+    //   },
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   components: { default: VideoLogin, header: MainNavbar, footer: MainFooter },
+    //   props: {
+    //     header: { colorOnScroll: 400 },
+    //     footer: { backgroundColor: 'black' },
+    //   },
+    // },
   ],
   scrollBehavior: (to) => {
     if (to.hash) {

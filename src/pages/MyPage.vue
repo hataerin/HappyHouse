@@ -73,15 +73,22 @@
         </h5>
         <div class="ml-auto mr-auto text-center">
           <div class="col">
-            <fg-input label="나이(만)" placeholder="나이를 입력해주세요" value="" type="search"> </fg-input>
+            <fg-input label="나이(만)" placeholder="나이를 입력해주세요" v-model="age" type="search">
+            </fg-input>
             <fg-input
               label="연소득(만원)"
               placeholder="기혼의 경우 부부합산 연소득을 입력해주세요"
-              value=""
+              v-model="income"
               type="search"
             >
             </fg-input>
-            <fg-input label="순자산가액(억)" placeholder="예) 5억4천만원 -> 5.4" value="" type="search"> </fg-input>
+            <fg-input
+              label="순자산가액(억)"
+              placeholder="예) 5억4천만원 -> 5.4"
+              v-model="asset"
+              type="search"
+            >
+            </fg-input>
             <div>
               <div>
                 <drop-down>
@@ -94,41 +101,44 @@
                     block
                     round
                   >
-                    보유주택수
+                    {{houseNumText}}
                   </n-button>
                   <h6 class="dropdown-header">Dropdown header</h6>
-                  <a class="dropdown-item" href="#">무주택</a>
-                  <a class="dropdown-item" href="#">1주택</a>
-                  <a class="dropdown-item" href="#">다주택</a>
+                  <a class="dropdown-item" v-on:click="houseNumText='무주택', houseNum=0">무주택</a>
+                  <a class="dropdown-item" v-on:click="houseNumText='1주택', houseNum=1">1주택</a>
+                  <a class="dropdown-item" v-on:click="houseNumText='다주택', houseNum=2">다주택</a>
                 </drop-down>
-                <n-button type="primary" size="lg">찰떡 대출 찾아보기</n-button>
+                <n-button type="primary" size="lg" v-on:click="getLoan">찰떡 대출 찾아보기</n-button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="ml-auto mr-auto text-center">
-      <card style="width: 30rem;">
-        <img
-          slot="image"
-          class="card-img-top"
-          src="https://www.bestcommunitybanks.com/uploads/news-pictures/3-new-york-blog-post-image-20200319104136.jpg"
-          alt="Card image cap"
-        />
-        <div>
-          <h4 class="card-title">내집마련 디딤돌 대출</h4>
-          <p class="card-text">정부지원 3대 서민 구입자금을 하나로 통합한 저금리 구입자금대출입니다.</p>
-          <strong>대출대상</strong>
-          주택매매계약을 체결한 자, 대출신청일 현재 무주택 세대주, 부부합산 연소득 6천만원 이하, 순자산가액 3.94억원
-          이하인 자
-          <br /><strong>대출금리</strong> 연 1.85~2.40% <br /><strong>대출한도</strong> 최고 2억원 이내 <br /><strong
-            >대출기간</strong
-          >
-          10년, 15년, 20년, 30년 <br /><n-button type="primary">자세히 보기</n-button>
-        </div>
-      </card>
-    </div>
+
+
+    <template v-for="loan of loanData">
+      <div class="ml-auto mr-auto text-center" :key="loan.name">
+        <card v-bind:key="loan.id" style="width: 30rem;">
+          <img
+            slot="image"
+            class="card-img-top"
+            src="https://www.bestcommunitybanks.com/uploads/news-pictures/3-new-york-blog-post-image-20200319104136.jpg"
+            alt="Card image cap"
+          />
+          <div>
+            <h4 class="card-title">{{loan.name}}</h4>
+            <p class="card-text">{{loan.description}}</p>
+            <strong>대출대상</strong>
+            {{loan.object_description}}
+            <br /><strong>대출금리</strong> {{loan.rate}} <br /><strong>대출한도</strong> {{loan.limit}} <br /><strong
+              >대출기간</strong
+            >
+            {{loan.term}} <br /><n-button type="primary"><a v-bind:href="loan.url">자세히 보기</a></n-button>
+          </div>
+        </card>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -148,6 +158,9 @@ export default {
     user() {
       return this.$store.getters.user;
     },
+    loanData() {
+      return this.loans
+    }
   },
   components: {
     Card,
@@ -156,16 +169,16 @@ export default {
     [Button.name]: Button,
   },
   created() {
-    axios
-      .get(addr + '/member/info')
-      .then(() => {})
-      .catch(() => {
-        this.$store.dispatch('logout').then(() => {
-          alert('로그인 후 사용하세요.');
-          this.$router.replace('/login');
-          //     this.$router.push({ path: '/' });
-        });
-      });
+    // axios
+    //   .get(addr + '/member/info')
+    //   .then(() => {})
+    //   .catch(() => {
+    //     this.$store.dispatch('logout').then(() => {
+    //       alert('로그인 후 사용하세요.');
+    //       this.$router.replace('/login');
+    //       //     this.$router.push({ path: '/' });
+    //     });
+    //   });
   },
   methods: {
     goChangeInfo() {
@@ -179,10 +192,33 @@ export default {
         this.$router.replace('/');
       }
     },
+    getLoan() {
+      axios
+        .get(addr + '/loan', {
+          params: {
+            age: this.age,
+            income: this.income,
+            houseNum: this.houseNum,
+            asset: this.asset
+          }
+        })
+        .then((res) => {
+          this.loans = res.data
+        }
+        )
+        .catch(() => {
+        });
+    }
   },
   data() {
     return {
       imgSrc: '...',
+      age: '',
+      income: '',
+      asset: '',
+      houseNumText: '보유주택수',
+      houseNum: '',
+      loans: []
     };
   },
 };
