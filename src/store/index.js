@@ -50,6 +50,7 @@ export default new Vuex.Store({
     logout(context) {
       context.commit('LOGOUT');
       axios.defaults.headers.common['auth-token'] = undefined;
+      return { Result: 'ok' };
     },
     addUser(context, user) {
       return axios.post(`${addr}/member`, user).then((response) => {

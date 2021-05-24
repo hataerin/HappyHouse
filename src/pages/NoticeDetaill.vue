@@ -17,7 +17,19 @@
     <div class="col-md-8 ml-auto mr-auto text-center">
       <b-form @submit="onSubmit" @reset="onReset">
         <b-form-group id="input-group-0" label="아이디:" label-for="input-0">
-          <b-form-input id="input-0" v-model="form.id" placeholder="Enter ID" disabled></b-form-input>
+          <b-form-input
+            id="input-0"
+            :state="idValidation"
+            v-model="form.id"
+            placeholder="Enter ID"
+            required
+          ></b-form-input>
+          <b-form-invalid-feedback :state="idValidation">
+            사용할 수 없는 아이디 입니다.
+          </b-form-invalid-feedback>
+          <b-form-valid-feedback :state="idValidation">
+            사용할 수 있는 아이디 입니다.
+          </b-form-valid-feedback>
         </b-form-group>
 
         <b-form-group id="input-group-1" label="나이:" label-for="input-1">
@@ -119,85 +131,7 @@
 <script>
 import { Button, FormGroupInput } from '@/components';
 import axios from 'axios';
-const addr = 'http://localhost/rest/notice';
-export default {
-  name: 'landing',
-  bodyClass: 'landing-page',
-  components: {
-    [Button.name]: Button,
-    [FormGroupInput.name]: FormGroupInput,
-  },
-  data() {
-    return {
-      form: {
-        id: '',
-        age: '',
-        pwd: '',
-        nickname: '',
-        sex: '',
-        mbti: '',
-        job: null,
-        email: '',
-      },
-      repwd: '',
-      jobs: [{ text: 'Select One', value: null }, '취준생', '대학생', '직장인', '주부'],
-      ids: [],
-    };
-  },
-  created() {
-    this.getId();
-  },
-  computed: {
-    idValidation() {
-      //   console.log(this.form.id.length);
-      //   return this.form.id.length > 4 && this.form.id.length < 13;
-      //  let index = this.ids.indexOf(this.form.id);
-      let index = this.ids.indexOf(this.form.id);
-      return this.form.id.length > 0 && this.form.id.length < 20 && -1 == index;
-    },
-    pwdValidation() {
-      return this.form.pwd == this.repwd && this.repwd.length > 0;
-    },
-  },
-  methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      if (this.idValidation && this.pwdValidation) {
-        alert(JSON.stringify(this.form));
-        let result = this.$store.dispatch('addUser', this.form);
-        if (result) {
-          alert(result);
-          this.$router.replace('/login');
-        }
-      } else {
-        alert('조건을 확인하세요');
-      }
-    },
-    onReset(event) {
-      event.preventDefault();
-      // Reset our form values
-      this.form.id = '';
-      this.form.age = '';
-      this.form.pw = '';
-      this.form.repwd = '';
-      this.form.nickname = '';
-      this.form.sex = '';
-      this.form.mbti = '';
-      this.form.job = '';
-      this.form.email = '';
-      // Trick to reset/clear native browser form validation state
-    },
-    getId() {
-      return axios
-        .get(addr)
-        .then((response) => {
-          this.ids = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
-};
+const addr = 'http://localhost/rest/member';
+export default {};
 </script>
 <style></style>

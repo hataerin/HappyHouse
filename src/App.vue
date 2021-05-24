@@ -11,7 +11,7 @@
 export default {
   mounted() {
     //   console.log('asd');
-    this.$store.dispatch('getSession');
+    //   this.$store.dispatch('getSession');
   },
 };
 </script>

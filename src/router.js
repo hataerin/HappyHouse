@@ -11,6 +11,10 @@ import MainNavbar from './layout/MainNavbar.vue';
 import MainFooter from './layout/MainFooter.vue';
 import Map from './pages/Map.vue';
 import MapNavbar from './layout/MapNavbar.vue';
+//import { ElNotificationComponent } from 'element-ui/types/notification';
+import Notice from './pages/Notice.vue';
+import ChangeInfo from './pages/ChangeInfo.vue';
+
 Vue.use(Router);
 
 export default new Router({
@@ -27,6 +31,15 @@ export default new Router({
       },
     },
     {
+      path: '/changeInfo',
+      name: 'changeInfo',
+      components: { default: ChangeInfo, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    /* {
       path: '/',
       name: 'index',
       components: { default: Index, header: MainNavbar, footer: MainFooter },
@@ -34,9 +47,18 @@ export default new Router({
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
       },
+    },*/
+    {
+      path: '/notice',
+      name: 'Notice',
+      components: { default: Notice, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
     },
     {
-      path: '/landing',
+      path: '/',
       name: 'landing',
       components: { default: Landing, header: MainNavbar, footer: MainFooter },
       props: {
