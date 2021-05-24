@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="page-header clear-filter" filter-color="orange">
-      <parallax
-        class="page-header-image"
-        style="background-image:url('img/bg5.jpg')"
-      >
-      </parallax>
+      <parallax class="page-header-image" style="background-image:url('img/bg5.jpg')"> </parallax>
       <div class="container">
         <div class="photo-container">
           <img src="img/ryan.jpg" alt="" />
@@ -51,10 +47,9 @@
         </div>
         <h3 class="title">About me</h3>
         <h5 class="description">
-          An artist of considerable range, Ryan — the name taken by
-          Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and
-          records all of his own music, giving it a warm, intimate feel with a
-          solid groove structure. An artist of considerable range.
+          An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy —
+          writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove
+          structure. An artist of considerable range.
         </h5>
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
@@ -131,8 +126,8 @@ export default {
   bodyClass: 'profile-page',
   components: {
     Tabs,
-    TabPane
-  }
+    TabPane,
+  },
 };
 </script>
 <style></style>

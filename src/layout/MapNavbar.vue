@@ -7,31 +7,31 @@
     </template>
     <template slot="navbar-menu">
       <li class="nav-item">
-        <a class="nav-link">
+        <router-link v-popover:popover1 class="navbar-brand" to="/map" style=" font-size: 20px;">
           <i class="now-ui-icons shopping_shop"></i>
           <p>매물찾기</p>
-        </a>
+        </router-link>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link">
+        <router-link v-popover:popover1 class="navbar-brand" to="/likes" style=" font-size: 20px;">
           <i class="now-ui-icons ui-2_favourite-28"></i>
           <p>관심목록</p>
-        </a>
+        </router-link>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link">
+        <router-link v-popover:popover1 class="navbar-brand" to="/" style=" font-size: 20px;">
           <i class="now-ui-icons location_bookmark"></i>
           <p>자주하는질문</p>
-        </a>
+        </router-link>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link">
+        <router-link v-popover:popover1 class="navbar-brand" to="/mypage" style=" font-size: 20px;">
           <i class="now-ui-icons users_single-02"></i>
           <p>마이페이지</p>
-        </a>
+        </router-link>
       </li>
 
       <li class="nav-item">

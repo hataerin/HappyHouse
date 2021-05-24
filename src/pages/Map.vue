@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div style="width:100%; height:100vh;">
       <b-button v-b-toggle.sidebar-1 id="searchBar">Search</b-button>
       <b-sidebar id="sidebar-1" title="검색" shadow v-model="lsidebar">
         <div class="px-3 py-2">
@@ -20,8 +20,7 @@
           </p>
         </div>
       </b-sidebar>
-    </div>
-    <div>
+
       <div style="display:none;">
         <b-button v-b-toggle.sidebar-right id="houseDealResult">Toggle Sidebar</b-button>
       </div>
@@ -46,8 +45,7 @@
           </p>
         </div>
       </b-sidebar>
-    </div>
-    <div style="width:100%; height:90vh;">
+
       <div id="map" style="width: 100%; height: 100%"></div>
     </div>
   </div>
@@ -164,4 +162,11 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+#searchBar {
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  left: 20px;
+}
+</style>
