@@ -108,14 +108,14 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    // {
-    //   path: '/login',
-    //   name: 'login',
-    //   components: { default: Login, header: MainNavbar },
-    //   props: {
-    //     header: { colorOnScroll: 400 },
-    //   },
-    // },
+    {
+      path: '/login',
+      name: 'login',
+      components: { default: Login, header: MainNavbar },
+      props: {
+        header: { colorOnScroll: 400 },
+      },
+    },
     {
       path: '/map',
       name: 'map',
@@ -154,24 +154,24 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    {
-      path: '/videoChat',
-      name: 'videoChat',
-      components: { default: VideoChat, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' },
-      },
-    },
-    {
-      path: '/login',
-      name: 'login',
-      components: { default: VideoLogin, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' },
-      },
-    },
+    // {
+    //   path: '/videoChat',
+    //   name: 'videoChat',
+    //   components: { default: VideoChat, header: MainNavbar, footer: MainFooter },
+    //   props: {
+    //     header: { colorOnScroll: 400 },
+    //     footer: { backgroundColor: 'black' },
+    //   },
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   components: { default: VideoLogin, header: MainNavbar, footer: MainFooter },
+    //   props: {
+    //     header: { colorOnScroll: 400 },
+    //     footer: { backgroundColor: 'black' },
+    //   },
+    // },
   ],
   scrollBehavior: (to) => {
     if (to.hash) {
