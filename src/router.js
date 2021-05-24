@@ -47,7 +47,7 @@ export default new Router({
       name: 'map',
       components: {
         default: Map,
-        //header: MapNavbar
+        header: MapNavbar,
       },
       props: {
         header: { colorOnScroll: 400 },

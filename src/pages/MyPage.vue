@@ -149,6 +149,9 @@
 
 <script>
 import { Tabs, TabPane } from '@/components';
+import axios from 'axios';
+
+const addr = 'http://localhost/rest';
 
 export default {
   name: 'profile',
@@ -161,6 +164,18 @@ export default {
   components: {
     Tabs,
     TabPane,
+  },
+  created() {
+    axios
+      .get(addr + '/member/info')
+      .then(() => {})
+      .catch(() => {
+        this.$store.dispatch('logout').then(() => {
+          alert('로그인 후 사용하세요.');
+          this.$router.replace('/');
+          //     this.$router.push({ path: '/' });
+        });
+      });
   },
 };
 </script>
