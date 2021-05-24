@@ -69,15 +69,15 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    /* {
-      path: '/',
+    {
+      path: '/qwer',
       name: 'index',
       components: { default: Index, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
       },
-    },*/
+    },
     {
       path: '/notice',
       name: 'Notice',
