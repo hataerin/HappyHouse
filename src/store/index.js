@@ -26,11 +26,15 @@ export default new Vuex.Store({
   },
   actions: {
     deleteMember(context, id) {
-      return axios.delete(`${addr}/member`, id).then((response) => {
-        //  context.commit('LOGOUT');
-        console.log(response);
-        return { Result: 'ok' };
-      });
+      return axios
+        .delete(`${addr}/member/` + id)
+        .then((response) => {
+          //     context.commit('');
+          return { Result: 'ok' };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     updateMemberInfo(context, user) {
       return axios.put(`${addr}/member`, user).then((response) => {
