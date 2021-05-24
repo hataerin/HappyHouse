@@ -78,8 +78,8 @@
             >여자</b-form-radio
           >
         </b-form-radio-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary">수정</b-button>
+        <b-button type="reset" variant="danger">취소</b-button>
       </b-form>
     </div>
     <!------------------------------->
@@ -118,14 +118,17 @@
 </template>
 <script>
 import { Button, FormGroupInput } from '@/components';
-import axios from 'axios';
-const addr = 'http://localhost/rest/notice';
+// import axios from 'axios';
+// const addr = 'http://localhost/rest/notice';
 export default {
   name: 'landing',
   bodyClass: 'landing-page',
   components: {
     [Button.name]: Button,
     [FormGroupInput.name]: FormGroupInput,
+  },
+  created() {
+    this.getUserInfo();
   },
   data() {
     return {
@@ -141,33 +144,44 @@ export default {
       },
       repwd: '',
       jobs: [{ text: 'Select One', value: null }, '취준생', '대학생', '직장인', '주부'],
-      ids: [],
     };
   },
-  created() {
-    this.getId();
-  },
   computed: {
-    idValidation() {
-      //   console.log(this.form.id.length);
-      //   return this.form.id.length > 4 && this.form.id.length < 13;
-      //  let index = this.ids.indexOf(this.form.id);
-      let index = this.ids.indexOf(this.form.id);
-      return this.form.id.length > 0 && this.form.id.length < 20 && -1 == index;
-    },
     pwdValidation() {
       return this.form.pwd == this.repwd && this.repwd.length > 0;
     },
   },
   methods: {
+    getUserInfo() {
+      let user = this.$store.getters.user;
+      console.log('user:', user);
+      this.form.id = user.id;
+      this.form.age = user.age;
+      this.form.pwd = user.pwd;
+      this.form.nickname = user.nickname;
+      this.form.sex = user.sex;
+      this.form.mbti = user.mbti;
+      this.form.job = user.job;
+      this.form.email = user.email;
+      console.log('mounted:', this.form);
+    },
     onSubmit(event) {
       event.preventDefault();
-      if (this.idValidation && this.pwdValidation) {
-        alert(JSON.stringify(this.form));
-        let result = this.$store.dispatch('addUser', this.form);
+      let _this = this;
+      console.log(this.form);
+      if (this.pwdValidation) {
+        let result = this.$store.dispatch('updateMemberInfo', this.form); //
+        /*
+        
+        
+        
+        
+        
+        */
+        console.log(this.form);
         if (result) {
           alert(result);
-          this.$router.replace('/login');
+          this.$router.replace('/mypage');
         }
       } else {
         alert('조건을 확인하세요');
@@ -175,27 +189,7 @@ export default {
     },
     onReset(event) {
       event.preventDefault();
-      // Reset our form values
-      this.form.id = '';
-      this.form.age = '';
-      this.form.pw = '';
-      this.form.repwd = '';
-      this.form.nickname = '';
-      this.form.sex = '';
-      this.form.mbti = '';
-      this.form.job = '';
-      this.form.email = '';
-      // Trick to reset/clear native browser form validation state
-    },
-    getId() {
-      return axios
-        .get(addr)
-        .then((response) => {
-          this.ids = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.$router.replace('/mypage');
     },
   },
 };

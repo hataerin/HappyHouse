@@ -36,7 +36,8 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
+          <a href="#button" class="btn btn-primary btn-round btn-lg" @click="goChangeInfo">회원수정</a>
+          <a href="#button" class="btn btn-default btn-round btn-lg" @click="deleteMember">회원탈퇴</a>
           <a
             href="#button"
             class="btn btn-default btn-round btn-lg btn-icon"
@@ -177,6 +178,14 @@ export default {
           //     this.$router.push({ path: '/' });
         });
       });
+  },
+  methods: {
+    goChangeInfo() {
+      this.$router.replace('/changeInfo');
+    },
+    deleteMember() {
+      this.$router.replace('/');
+    },
   },
 };
 </script>
