@@ -14,6 +14,8 @@ import MapNavbar from './layout/MapNavbar.vue';
 //import { ElNotificationComponent } from 'element-ui/types/notification';
 import Notice from './pages/Notice.vue';
 import ChangeInfo from './pages/ChangeInfo.vue';
+import VideoChat from './pages/VideoChat.vue';
+import VideoLogin from './pages/auth/Login.vue';
 
 Vue.use(Router);
 
@@ -66,14 +68,14 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    {
-      path: '/login',
-      name: 'login',
-      components: { default: Login, header: MainNavbar },
-      props: {
-        header: { colorOnScroll: 400 },
-      },
-    },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   components: { default: Login, header: MainNavbar },
+    //   props: {
+    //     header: { colorOnScroll: 400 },
+    //   },
+    // },
     {
       path: '/map',
       name: 'map',
@@ -107,6 +109,24 @@ export default new Router({
       path: '/mypage',
       name: 'mypage',
       components: { default: MyPage, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: '/videoChat',
+      name: 'videoChat',
+      components: { default: VideoChat, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: '/login',
+      name: 'login',
+      components: { default: VideoLogin, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
