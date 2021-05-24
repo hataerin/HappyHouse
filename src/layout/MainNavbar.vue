@@ -27,7 +27,7 @@
       </li>
 
       <li class="nav-item">
-        <router-link v-popover:popover1 class="navbar-brand" to="/" style=" font-size: 20px;">
+        <router-link v-popover:popover1 class="navbar-brand" to="/qna" style=" font-size: 20px;">
           <i class="now-ui-icons location_bookmark"></i>
           <p>자주하는질문</p>
         </router-link>

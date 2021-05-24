@@ -13,9 +13,11 @@
     </div>
 
     <!------------------------------------------------------->
-
-    <div class="col-md-8 ml-auto mr-auto text-center">
-      <b-form @submit="onSubmit" @reset="onReset"> </b-form>
+    <div style="margin-top:40px;">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2>QnA</h2>
+        <b-table striped hover :items="items"></b-table>
+      </div>
     </div>
     <!------------------------------->
     <div class="section section-team text-center">
@@ -52,9 +54,38 @@
   </div>
 </template>
 <script>
-import { Button, FormGroupInput } from '@/components';
+// import { Button, FormGroupInput } from '@/components';
 import axios from 'axios';
-const addr = 'http://localhost/rest/member';
-export default {};
+const addr = 'http://localhost/rest/qna';
+export default {
+  data() {
+    return {
+      items: [],
+    };
+  },
+  created() {
+    let _this = this;
+    return axios
+      .get(addr)
+      .then((response) => {
+        _this.items = [];
+        for (let i = 0; i < response.data.length; i++) {
+          console.log('asd');
+          _this.items.push({
+            no: response.data[i].noticeno,
+            title: response.data[i].subject,
+            author: response.data[i].userid,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+};
 </script>
-<style></style>
+<style scoped>
+img {
+  max-width: 100px;
+}
+</style>

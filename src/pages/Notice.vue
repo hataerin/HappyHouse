@@ -15,7 +15,8 @@
     <!------------------------------------------------------->
     <div style="margin-top:40px;">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <b-table striped hover :items="items"></b-table>
+        <h2>공지 사항</h2>
+        <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
       </div>
     </div>
     <!------------------------------->
@@ -59,12 +60,7 @@ const addr = 'http://localhost/rest/notice';
 export default {
   data() {
     return {
-      items: [
-        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-        { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-        { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-        { age: 38, first_name: 'Jami', last_name: 'Carney' },
-      ],
+      items: [],
     };
   },
   created() {
@@ -86,6 +82,15 @@ export default {
         console.log(error);
       });
   },
+  methods: {
+    goDetailNotice(item) {
+      this.$router.push({ path: '/noticeDetail/' + item.no });
+    },
+  },
 };
 </script>
-<style></style>
+<style scoped>
+img {
+  max-width: 100px;
+}
+</style>
