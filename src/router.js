@@ -16,13 +16,23 @@ import Notice from './pages/Notice.vue';
 import ChangeInfo from './pages/ChangeInfo.vue';
 import Qna from './pages/QnA.vue';
 import NoticeDetail from './pages/NoticeDetail.vue';
-
+import QnaDetail from './pages/QnaDetail.vue';
+import NoticeWrite from './pages/NoticeWrite.vue';
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
+    {
+      path: '/noticewrite',
+      name: 'noticewrite',
+      components: { default: NoticeWrite, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
     {
       path: '/noticedetail/:noticeno',
       name: 'noticetail',
@@ -72,6 +82,15 @@ export default new Router({
       path: '/notice',
       name: 'Notice',
       components: { default: Notice, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: '/qnaDetail/:qnano',
+      name: 'QnaDetail',
+      components: { default: QnaDetail, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },

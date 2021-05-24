@@ -16,7 +16,7 @@
     <div style="margin-top:40px;">
       <div class="col-md-8 ml-auto mr-auto text-center">
         <h2>QnA</h2>
-        <b-table striped hover :items="items"></b-table>
+        <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
       </div>
     </div>
     <!------------------------------->
@@ -72,7 +72,7 @@ export default {
         for (let i = 0; i < response.data.length; i++) {
           console.log('asd');
           _this.items.push({
-            no: response.data[i].noticeno,
+            no: response.data[i].qnano,
             title: response.data[i].subject,
             author: response.data[i].userid,
           });
@@ -81,6 +81,11 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    goDetailNotice(item) {
+      this.$router.push({ path: '/qnaDetail/' + item.no });
+    },
   },
 };
 </script>
