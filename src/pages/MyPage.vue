@@ -7,14 +7,16 @@
       >
       </parallax>
       <div class="container">
-        
         <div class="photo-container">
           <img src="img/ryan.jpg" alt="" />
         </div>
-        <h3 class="title">홍길동</h3>
+        <h3 class="title">{{ user.nickname }}</h3>
 
-        <p class="category">ssafy@ssafy.com</p>
-        <p class="category">Photographer</p>
+        <p class="category">{{ user.email }}</p>
+        <p class="category">{{ user.id }}</p>
+        <p class="category">{{ user.age }}</p>
+        <p class="category">{{ user.mbti }}</p>
+        <p class="category">{{ user.job }}</p>
         <div class="content">
           <div class="social-description">
             <h2>26</h2>
@@ -63,30 +65,24 @@
           </div>
 
           <div class="col-md-10 ml-auto mr-auto">
-                <div class="row collections">
-                  <div class="col-md-6">
-                    <img src="img/bg3.jpg" alt="" class="img-raised" style="" />
-                    <img src="img/bg8.jpg" alt="" class="img-raised" />
-                  </div>
-                  <div class="col-md-6">
-                    <img src="img/bg7.jpg" alt="" class="img-raised" />
-                    <img src="img/bg6.jpg" class="img-raised" />
-                  </div>
-                </div>
+            <div class="row collections">
+              <div class="col-md-6">
+                <img src="img/bg3.jpg" alt="" class="img-raised" style="" />
+                <img src="img/bg8.jpg" alt="" class="img-raised" />
               </div>
-
+              <div class="col-md-6">
+                <img src="img/bg7.jpg" alt="" class="img-raised" />
+                <img src="img/bg6.jpg" class="img-raised" />
+              </div>
+            </div>
+          </div>
         </div>
-
-
-
-
-
 
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
             <h4 class="title text-center">My Portfolio</h4>
           </div>
-          
+
           <tabs
             pills
             class="nav-align-center"
@@ -157,10 +153,15 @@ import { Tabs, TabPane } from '@/components';
 export default {
   name: 'profile',
   bodyClass: 'profile-page',
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+  },
   components: {
     Tabs,
-    TabPane
-  }
+    TabPane,
+  },
 };
 </script>
 <style></style>

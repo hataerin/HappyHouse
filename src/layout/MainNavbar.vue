@@ -12,9 +12,8 @@
       </router-link>
     </template>
     <template slot="navbar-menu">
-      
       <li class="nav-item">
-        <router-link v-popover:popover1 class="navbar-brand" to="/" style=" font-size: 20px;">
+        <router-link v-popover:popover1 class="navbar-brand" to="/map" style=" font-size: 20px;">
           <i class="now-ui-icons shopping_shop"></i>
           <p>매물찾기</p>
         </router-link>
@@ -41,34 +40,17 @@
         </router-link>
       </li>
 
-
-
       <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
-          target="_blank"
-        >
+        <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>
           <p>Download</p>
         </a>
       </li>
-      
-      <drop-down
-              tag="li"
-              title="Examples"
-              icon="now-ui-icons design_image"
-              class="nav-item"
-      >
-        <nav-link to="/landing">
-          <i class="now-ui-icons education_paper"></i> Landing
-        </nav-link>
-        <nav-link to="/login">
-          <i class="now-ui-icons users_circle-08"></i> Login
-        </nav-link>
-        <nav-link to="/profile">
-          <i class="now-ui-icons users_single-02"></i> Profile
-        </nav-link>
+
+      <drop-down tag="li" title="Examples" icon="now-ui-icons design_image" class="nav-item">
+        <nav-link to="/landing"> <i class="now-ui-icons education_paper"></i> Landing </nav-link>
+        <nav-link to="/login"> <i class="now-ui-icons users_circle-08"></i> Login </nav-link>
+        <nav-link to="/profile"> <i class="now-ui-icons users_single-02"></i> Profile </nav-link>
       </drop-down>
     </template>
   </navbar>
@@ -81,14 +63,14 @@ export default {
   name: 'main-navbar',
   props: {
     transparent: Boolean,
-    colorOnScroll: Number
+    colorOnScroll: Number,
   },
   components: {
     DropDown,
     Navbar,
     NavLink,
-    [Popover.name]: Popover
-  }
+    [Popover.name]: Popover,
+  },
 };
 </script>
 

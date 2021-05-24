@@ -16,15 +16,23 @@
  */
 import Vue from 'vue';
 import App from './App.vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 // You can change this import to `import router from './starterRouter'` to quickly start development from a blank layout.
 import router from './router';
 import NowUiKit from './plugins/now-ui-kit';
+import store from './store';
 
 Vue.config.productionTip = false;
 
 Vue.use(NowUiKit);
+Vue.use(BootstrapVue);
+
+Vue.use(IconsPlugin);
 
 new Vue({
   router,
-  render: h => h(App)
+  store,
+  render: (h) => h(App),
 }).$mount('#app');
