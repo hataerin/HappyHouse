@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="page-header clear-filter" filter-color="orange">
-      <parallax
-        class="page-header-image"
-        style="background-image:url('img/header.jpg')"
-      >
-      </parallax>
+      <parallax class="page-header-image" style="background-image:url('img/header.jpg')"> </parallax>
       <div class="container">
         <div class="content-center brand">
           <img class="n-logo" src="img/now-logo.png" alt="" />
@@ -18,10 +14,7 @@
             <img src="img/invision-white-slim.png" class="invision-logo" /> </a
           >. Coded by
           <a href="https://www.creative-tim.com" target="_blank">
-            <img
-              src="img/creative-tim-white-slim2.png"
-              class="creative-tim-logo"
-            /> </a
+            <img src="img/creative-tim-white-slim2.png" class="creative-tim-logo" /> </a
           >.
         </h6>
       </div>
@@ -60,10 +53,9 @@
           <div class="col-md-12 col-lg-8">
             <h2 class="title">Completed with examples</h2>
             <h5 class="description">
-              The kit comes with three pre-built pages to help you get started
-              faster. You can change the text and images and you're good to go.
-              More importantly, looking at them will give you a picture of what
-              you can built with this powerful Bootstrap 4 ui kit.
+              The kit comes with three pre-built pages to help you get started faster. You can change the text and
+              images and you're good to go. More importantly, looking at them will give you a picture of what you can
+              built with this powerful Bootstrap 4 ui kit.
             </h5>
           </div>
         </div>
@@ -105,8 +97,8 @@ export default {
     NucleoIconsSection,
     SignupForm,
     ExamplesSection,
-    DownloadSection
-  }
+    DownloadSection,
+  },
 };
 </script>
 <style></style>

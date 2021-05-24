@@ -7,6 +7,7 @@ const addr = 'http://localhost/rest';
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
+    accessToken: null,
     nowlat: '',
     nowlng: '',
     housedeal: [],
@@ -19,19 +20,43 @@ export default new Vuex.Store({
     user(state) {
       return state.user;
     },
+    accessToken(state) {
+      return state.accessToken;
+    },
   },
   actions: {
-    login({ commit }, data) {
-      console.log('action:', data);
+    getSession(context) {
+      axios.defaults.headers.common['auth-token'] = sessionStorage.getItem('accessToken');
+      console.log('getSession');
+      console.dir(sessionStorage.getItem('user'));
+      console.log(sessionStorage.getItem('accessToken'));
       return axios
-        .post(addr + '/member/login', data)
+        .get(addr + '/member/info')
         .then((response) => {
-          commit('LOGIN', response.data);
-          return { Result: 'ok' };
+          console.log(response);
+          context.commit('GET_SESSION');
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          //  return this.$store.logout();
         });
+    },
+    login(context, user) {
+      return axios.post(`${addr}/member/login`, user).then(({ data }) => {
+        context.commit('LOGIN', data);
+        axios.defaults.headers.common['auth-token'] = `${data['auth-token']}`;
+        return this.state.user;
+      });
+    },
+    logout(context) {
+      context.commit('LOGOUT');
+      axios.defaults.headers.common['auth-token'] = undefined;
+      return { Result: 'ok' };
+    },
+    addUser(context, user) {
+      return axios.post(`${addr}/member`, user).then((response) => {
+        console.log(response);
+        return { Result: 'ok' };
+      });
     },
     getAllHouseDeal({ commit }) {
       return axios
@@ -70,13 +95,28 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    GET_SESSION(state) {
+      state.user = sessionStorage.getItem('user');
+      state.accessToken = sessionStorage.getItem('accessToken');
+      console.log('-------------------------------');
+      console.log(state.user);
+      console.log(state.accessToken);
+    },
     GET_HOUSE_DEAL(state, data) {
       state.housedeal = data;
       //      console.log('mutations', state.housedeal);
     },
-    LOGIN(state, data) {
-      console.log('login', data);
-      state.user = data;
+    LOGIN(state, payload) {
+      state.accessToken = payload['auth-token'];
+      state.user = payload['user'];
+      sessionStorage.setItem('user', payload['user']);
+      sessionStorage.setItem('accessToken', payload['auth-token']);
+    },
+    LOGOUT(state) {
+      state.accessToken = null;
+      state.user = '';
+      sessionStorage.removeItem('user');
+      sessionStorage.removeItem('accessToken');
     },
   },
   modeuls: {},

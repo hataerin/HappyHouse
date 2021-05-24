@@ -174,19 +174,34 @@
 
 <script>
 import { Tabs, TabPane } from '@/components';
-import {DropDown} from '@/components'
+import axios from 'axios';
+
+const addr = 'http://localhost/rest';
 
 export default {
   name: 'profile',
   bodyClass: 'profile-page',
   computed: {
     user() {
+      console.log(this.$store.getters.user);
       return this.$store.getters.user;
     },
   },
   components: {
     Tabs,
     TabPane,
+  },
+  created() {
+    axios
+      .get(addr + '/member/info')
+      .then(() => {})
+      .catch(() => {
+        this.$store.dispatch('logout').then(() => {
+          alert('로그인 후 사용하세요.');
+          this.$router.replace('/login');
+          //     this.$router.push({ path: '/' });
+        });
+      });
   },
 };
 </script>

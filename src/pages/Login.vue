@@ -71,10 +71,9 @@ export default {
       let result = await this.$store.dispatch('login', { id: this.id, pwd: this.pwd });
       if (result) {
         alert('로그인 성공');
-        alert(result);
-        alert(_this.$store.getters.user.id);
+        this.$router.replace('/');
       } else {
-        alert('에러');
+        alert('로그인 실패');
       }
     },
   },
