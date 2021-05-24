@@ -127,14 +127,16 @@
             alt="Card image cap"
           />
           <div>
-            <h4 class="card-title">{{loan.name}}</h4>
+            <h4 class="card-title" style="font-weight: bold;">{{loan.name}}</h4>
             <p class="card-text">{{loan.description}}</p>
-            <strong>대출대상</strong>
-            {{loan.object_description}}
-            <br /><strong>대출금리</strong> {{loan.rate}} <br /><strong>대출한도</strong> {{loan.limit}} <br /><strong
-              >대출기간</strong
-            >
-            {{loan.term}} <br /><n-button type="primary"><a v-bind:href="loan.url">자세히 보기</a></n-button>
+            <div style="text-align: left;">
+              <strong>대출대상</strong>
+              {{loan.object_description}}
+              <br /><strong>대출금리</strong> {{loan.rate}} 
+              <br /><strong>대출한도</strong> {{loan.limit}} 
+              <br /><strong>대출기간</strong> {{loan.term}} 
+            </div>
+            <br /><n-button type="primary"><a v-bind:href="loan.url" style="color: white;">자세히 보기</a></n-button>
           </div>
         </card>
       </div>
