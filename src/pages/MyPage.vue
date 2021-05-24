@@ -54,11 +54,36 @@
             <i class="fab fa-instagram"></i>
           </a>
         </div>
-        <h3 class="title">설문조사</h3>
+
+
+        <div style="text-align: center;">
+              <img src="https://image.freepik.com/free-vector/mortgage-loan-against-background-calculator-house_178888-288.jpg" alt="" style="" />
+        </div>
+
+        <h2 class="title">주택을 구입할 자금 대출이 필요하신가요?</h2>
         <h5 class="description">
-          당신의 선호도, 라이프스타일, 직업 그리고 예산에 관한 몇가지 질문에 답해주세요
+          나이, 소득 등 당신에 관한 몇가지 질문에 답하고 맞춤 주거복지 서비스를 찾아보세요
         </h5>
 
+        
+
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <h4 class="title text-center">나이</h4>
+          </div>
+
+          <div class="col-md-10 ml-auto mr-auto">
+            <div class="row collections">
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+              <div class="col-md-2"><img src="img/bg3.jpg" alt="" class="img-raised" style="" /></div>
+            </div>
+          </div>
+          
+        </div>
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
             <h4 class="title text-center">성격</h4>
@@ -149,6 +174,7 @@
 
 <script>
 import { Tabs, TabPane } from '@/components';
+import {DropDown} from '@/components'
 
 export default {
   name: 'profile',
