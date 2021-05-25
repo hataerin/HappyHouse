@@ -30,8 +30,8 @@
           <pre class="mt-2 mb-0"></pre>
         </div>
 
-        <b-button type="submit" variant="primary" v-if="mode == 'update'" @click="updateNotice">수정</b-button>
-        <b-button type="submit" variant="primary" v-if="mode == 'write'" @click="writeNotice">작성</b-button>
+        <b-button type="submit" variant="primary" v-if="mode == 'update'" @click="updateQna">수정</b-button>
+        <b-button type="submit" variant="primary" v-if="mode == 'write'" @click="writeQna">작성</b-button>
         <b-button type="reset" variant="danger" @click="goList">취소</b-button>
       </b-form>
     </div>
@@ -42,7 +42,7 @@
 <script>
 import { Button, FormGroupInput } from '@/components';
 import axios from 'axios';
-const addr = 'http://localhost/rest/notice';
+const addr = 'http://localhost/rest/qna';
 export default {
   name: 'landing',
   bodyClass: 'landing-page',
@@ -84,32 +84,36 @@ export default {
     getUserId() {
       this.form.userid = this.$store.getters.user.id;
     },
-    updateNotice(event) {
+    updateQna(event) {
       event.preventDefault();
-      this.form.noticeno = this.no;
+      this.form.qnano = this.no;
+      console.log(this.form);
       return axios
         .put(addr, this.form)
         .then((response) => {
+          this.$router.replace('/qna');
           console.log(response);
-          this.$router.replace('/notice');
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    writeNotice(event) {
+
+    post() {},
+    writeQna(event) {
       event.preventDefault();
       return axios
         .post(addr, this.form)
         .then((response) => {
-          this.$router.replace('/notice');
+          console.log(response);
+          this.$router.replace('/qna');
         })
         .catch((error) => {
           console.log(error);
         });
     },
     goList() {
-      this.$router.replace('/notice');
+      this.$router.replace('/qna');
     },
   },
 };

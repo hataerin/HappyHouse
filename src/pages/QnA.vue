@@ -16,6 +16,7 @@
     <div style="margin-top:40px;">
       <div class="col-md-8 ml-auto mr-auto text-center">
         <h2>QnA</h2>
+        <n-button type="primary" v-if="admin == 0 || admin == 1" @click="goWrite">글쓰기</n-button>
         <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
       </div>
     </div>
@@ -56,14 +57,20 @@
 <script>
 // import { Button, FormGroupInput } from '@/components';
 import axios from 'axios';
+import { Button } from '@/components';
 const addr = 'http://localhost/rest/qna';
 export default {
+  components: {
+    [Button.name]: Button,
+  },
   data() {
     return {
       items: [],
+      admin: '',
     };
   },
   created() {
+    this.admin = this.$store.getters.user.admin;
     let _this = this;
     return axios
       .get(addr)
@@ -85,6 +92,9 @@ export default {
   methods: {
     goDetailNotice(item) {
       this.$router.push({ path: '/qnaDetail/' + item.no });
+    },
+    goWrite() {
+      this.$router.replace('/qnaWrite/write/0');
     },
   },
 };
