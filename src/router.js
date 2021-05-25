@@ -23,6 +23,7 @@ import Video from './pages/Video.vue';
 import {
   CometChatUI
 } from "./cometchat-pro-vue-ui-kit/";
+import QnaWrite from './pages/QnaWrite.vue';
 Vue.use(Router);
 
 export default new Router({
@@ -30,7 +31,16 @@ export default new Router({
   linkExactActiveClass: 'active',
   routes: [
     {
-      path: '/noticewrite',
+      path: '/qnawrite/:mode/:no',
+      name: 'qnawrite',
+      components: { default: QnaWrite, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: '/noticewrite/:mode/:no',
       name: 'noticewrite',
       components: { default: NoticeWrite, header: MainNavbar, footer: MainFooter },
       props: {
@@ -74,15 +84,15 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    /* {
-      path: '/',
+    {
+      path: '/qwer',
       name: 'index',
       components: { default: Index, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
       },
-    },*/
+    },
     {
       path: '/notice',
       name: 'Notice',
