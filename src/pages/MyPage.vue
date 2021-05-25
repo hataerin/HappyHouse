@@ -17,20 +17,7 @@
         <p class="category">{{ user.age }}</p>
         <p class="category">{{ user.mbti }}</p>
         <p class="category">{{ user.job }}</p>
-        <div class="content">
-          <div class="social-description">
-            <h2>26</h2>
-            <p>Comments</p>
-          </div>
-          <div class="social-description">
-            <h2>26</h2>
-            <p>Comments</p>
-          </div>
-          <div class="social-description">
-            <h2>48</h2>
-            <p>Bookmarks</p>
-          </div>
-        </div>
+        <div class="content"></div>
       </div>
     </div>
 
@@ -39,23 +26,6 @@
         <div class="button-container">
           <a href="#button" class="btn btn-primary btn-round btn-lg" @click="goChangeInfo">회원수정</a>
           <a href="#button" class="btn btn-default btn-round btn-lg" @click="deleteMember">회원탈퇴</a>
-
-          <a
-            href="#button"
-            class="btn btn-default btn-round btn-lg btn-icon"
-            rel="tooltip"
-            title="Follow me on Twitter"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a
-            href="#button"
-            class="btn btn-default btn-round btn-lg btn-icon"
-            rel="tooltip"
-            title="Follow me on Instagram"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
         </div>
         <div></div>
 
@@ -73,8 +43,7 @@
         </h5>
         <div class="ml-auto mr-auto text-center">
           <div class="col">
-            <fg-input label="나이(만)" placeholder="나이를 입력해주세요" v-model="age" type="search">
-            </fg-input>
+            <fg-input label="나이(만)" placeholder="나이를 입력해주세요" v-model="age" type="search"> </fg-input>
             <fg-input
               label="연소득(만원)"
               placeholder="기혼의 경우 부부합산 연소득을 입력해주세요"
@@ -82,12 +51,7 @@
               type="search"
             >
             </fg-input>
-            <fg-input
-              label="순자산가액(억)"
-              placeholder="예) 5억4천만원 -> 5.4"
-              v-model="asset"
-              type="search"
-            >
+            <fg-input label="순자산가액(억)" placeholder="예) 5억4천만원 -> 5.4" v-model="asset" type="search">
             </fg-input>
             <div>
               <div>
@@ -101,12 +65,12 @@
                     block
                     round
                   >
-                    {{houseNumText}}
+                    {{ houseNumText }}
                   </n-button>
                   <h6 class="dropdown-header">Dropdown header</h6>
-                  <a class="dropdown-item" v-on:click="houseNumText='무주택', houseNum=0">무주택</a>
-                  <a class="dropdown-item" v-on:click="houseNumText='1주택', houseNum=1">1주택</a>
-                  <a class="dropdown-item" v-on:click="houseNumText='다주택', houseNum=2">다주택</a>
+                  <a class="dropdown-item" v-on:click="(houseNumText = '무주택'), (houseNum = 0)">무주택</a>
+                  <a class="dropdown-item" v-on:click="(houseNumText = '1주택'), (houseNum = 1)">1주택</a>
+                  <a class="dropdown-item" v-on:click="(houseNumText = '다주택'), (houseNum = 2)">다주택</a>
                 </drop-down>
                 <n-button type="primary" size="lg" v-on:click="getLoan">찰떡 대출 찾아보기</n-button>
               </div>
@@ -115,7 +79,6 @@
         </div>
       </div>
     </div>
-
 
     <template v-for="loan of loanData">
       <div class="ml-auto mr-auto text-center" :key="loan.name">
@@ -127,14 +90,14 @@
             alt="Card image cap"
           />
           <div>
-            <h4 class="card-title">{{loan.name}}</h4>
-            <p class="card-text">{{loan.description}}</p>
+            <h4 class="card-title">{{ loan.name }}</h4>
+            <p class="card-text">{{ loan.description }}</p>
             <strong>대출대상</strong>
-            {{loan.object_description}}
-            <br /><strong>대출금리</strong> {{loan.rate}} <br /><strong>대출한도</strong> {{loan.limit}} <br /><strong
-              >대출기간</strong
+            {{ loan.object_description }}
+            <br /><strong>대출금리</strong> {{ loan.rate }} <br /><strong>대출한도</strong> {{ loan.limit }}
+            <br /><strong>대출기간</strong> {{ loan.term }} <br /><n-button type="primary"
+              ><a v-bind:href="loan.url">자세히 보기</a></n-button
             >
-            {{loan.term}} <br /><n-button type="primary"><a v-bind:href="loan.url">자세히 보기</a></n-button>
           </div>
         </card>
       </div>
@@ -159,8 +122,8 @@ export default {
       return this.$store.getters.user;
     },
     loanData() {
-      return this.loans
-    }
+      return this.loans;
+    },
   },
   components: {
     Card,
@@ -188,6 +151,7 @@ export default {
       let result = this.$store.dispatch('deleteMember', this.user.id);
       //    let result = 1;
       if (result) {
+        showAlert();
         alert('회원탈퇴 완료');
         this.$router.replace('/');
       }
@@ -199,16 +163,14 @@ export default {
             age: this.age,
             income: this.income,
             houseNum: this.houseNum,
-            asset: this.asset
-          }
+            asset: this.asset,
+          },
         })
         .then((res) => {
-          this.loans = res.data
-        }
-        )
-        .catch(() => {
-        });
-    }
+          this.loans = res.data;
+        })
+        .catch(() => {});
+    },
   },
   data() {
     return {
@@ -218,7 +180,7 @@ export default {
       asset: '',
       houseNumText: '보유주택수',
       houseNum: '',
-      loans: []
+      loans: [],
     };
   },
 };
