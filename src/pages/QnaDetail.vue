@@ -19,24 +19,49 @@
         <div>{{ qna.qnano }}</div>
         <div>{{ qna.subject }}</div>
         <div>{{ qna.content }}</div>
+        <template v-if="user.admin == 0 || qna.userid == user.id">
+          <n-button type="primary" @click="goUpdateQna">수정</n-button>
+          <n-button type="default" @click="deleteQna">삭제</n-button>
+        </template>
       </div>
     </div>
     <!------------------------------->
   </div>
 </template>
 <script>
+import { Button } from '@/components';
 import axios from 'axios';
 const addr = 'http://localhost/rest/qna';
 export default {
+  components: {
+    [Button.name]: Button,
+  },
   data() {
     return {
       qna: '',
+      user: '',
     };
   },
-  mounted() {
+  created() {
     axios.get(addr + '/detail/' + this.$route.params.qnano).then((response) => {
       this.qna = response.data;
     });
+    this.user = this.$store.getters.user;
+  },
+  methods: {
+    goUpdateQna() {
+      this.$router.replace('/qnawrite/update/' + this.qna.qnano);
+    },
+    deleteQna() {
+      return axios
+        .delete(addr + '/' + this.qna.qnano)
+        .then(() => {
+          this.$router.replace('/qna');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

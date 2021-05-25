@@ -20,8 +20,10 @@
             <fg-input
               class="no-border input-lg"
               addon-left-icon="now-ui-icons text_caps-small"
+              type="password"
               placeholder="pwd"
               v-model="pwd"
+              @keyup:enter="login"
             >
             </fg-input>
 
@@ -31,7 +33,7 @@
               </div>
               <div class="pull-left">
                 <h6>
-                  <a href="#pablo" class="link footer-link">Create Account</a>
+                  <a href="/signup" class="link footer-link">Create Account</a>
                 </h6>
               </div>
               <div class="pull-right">

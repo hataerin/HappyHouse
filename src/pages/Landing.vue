@@ -87,7 +87,7 @@
                 숲세권까지 지도에서 매물정보를 한눈에 확인할 수 있습니다.
               </p>
               <div class="button-container">
-                <a href="#button" class="btn btn-simple btn-round btn-lg">바로가기</a>
+                <a href="/map" class="btn btn-simple btn-round btn-lg">바로가기</a>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@
                 정리해 놓았습니다.
               </p>
               <div class="button-container">
-                <a href="#button" class="btn btn-simple btn-round btn-lg">바로가기</a>
+                <a href="/qna" class="btn btn-simple btn-round btn-lg">바로가기</a>
               </div>
             </div>
           </div>

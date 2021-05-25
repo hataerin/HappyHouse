@@ -149,6 +149,7 @@ export default {
         sex: '',
         mbti: '',
         job: null,
+        admin: '1',
         email: '',
       },
       repwd: '',

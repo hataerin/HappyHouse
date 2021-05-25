@@ -16,27 +16,60 @@
 
     <div class="col-md-8 ml-auto mr-auto text-center" style="height:500px;">
       <div>
-        <div>{{ notice.noticeno }}</div>
-        <div>{{ notice.subject }}</div>
+        <div>QnA {{ notice.noticeno }} {{ notice.subject }}</div>
+        <div>{{ notice.userid }} | {{ notice.regtime }}</div>
         <div>{{ notice.content }}</div>
+        <template v-if="user.admin == 0 || notice.userid == user.id">
+          <n-button type="primary" @click="goUpdateNotice">수정</n-button>
+          <n-button type="default" @click="deleteNotice">삭제</n-button>
+        </template>
+        <div>
+          <n-button type="primary" @click="goList">수정</n-button>
+        </div>
       </div>
     </div>
     <!------------------------------->
   </div>
 </template>
 <script>
+import { Button } from '@/components';
 import axios from 'axios';
 const addr = 'http://localhost/rest/notice';
+
 export default {
+  components: {
+    [Button.name]: Button,
+  },
   data() {
     return {
       notice: '',
+      user: '',
     };
   },
-  mounted() {
+  created() {
     axios.get(addr + '/detail/' + this.$route.params.noticeno).then((response) => {
       this.notice = response.data;
     });
+    this.user = this.$store.getters.user;
+  },
+  methods: {
+    goUpdateNotice() {
+      this.$router.replace('/noticewrite/update/' + this.notice.noticeno);
+    },
+    deleteNotice() {
+      return axios
+        .delete(addr + '/' + this.notice.noticeno)
+        .then((response) => {
+          console.log(response);
+          this.$router.replace('/notice');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    goList() {
+      this.$route.replace('/notice');
+    },
   },
 };
 </script>

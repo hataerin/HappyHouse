@@ -16,6 +16,16 @@
                 @keyup.enter="searchHouseDeals"
               ></b-form-input>
             </b-input-group>
+            <b-form-group label="좋아하는 시설" v-slot="{ ariaDescribedby }">
+              <b-form-checkbox-group
+                id="checkbox-group-1"
+                v-model="selected"
+                :options="options"
+                :aria-describedby="ariaDescribedby"
+                name="flavour-1"
+              ></b-form-checkbox-group>
+            </b-form-group>
+
             <button @click="searchHouseDeals">검색</button>
           </p>
         </div>
@@ -53,7 +63,9 @@
 
 <script>
 var marker = [];
-var overlay = [];
+var facilities = [];
+var markerlat = [];
+var markerlng = [];
 export default {
   data() {
     return {
@@ -62,6 +74,16 @@ export default {
       map: '',
       rsidebar: false,
       lsidebar: false,
+
+      selected: [], // Must be an array reference!
+      options: [
+        { text: '은행', value: '0', target: 'BK9', dataorder: '0' },
+        { text: '마트', value: '1', target: 'MT1', dataorder: '1' },
+        { text: '약국', value: '2', target: 'PM9', dataorder: '2' },
+        { text: '주유소', value: '3', target: 'OL7', dataorder: '3' },
+        { text: '카페', value: '4', target: 'CE7', dataorder: '4' },
+        { text: '편의점', value: '5', target: 'CS2', dataorder: '5' },
+      ],
     };
   },
   created() {
@@ -71,18 +93,67 @@ export default {
     this.makeMap();
   },
   methods: {
+    getFacilities(si, index) {
+      var _this = this;
+      console.log('getFacilities');
+      var places = new kakao.maps.services.Places();
+      var callback = function(result, status, pagination) {
+        console.log(result);
+        if (status === kakao.maps.services.Status.OK) {
+          for (let i = 0; i < result.length; i++) {
+            //  let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다\
+            let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커이미지의 주소입니다\
+              imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
+              imageOption = {
+                spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
+                spriteOrigin: new kakao.maps.Point(46, _this.options[si].dataorder * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                offset: new kakao.maps.Point(11, 28), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+              };
+            console.log(imageSrc);
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+              markerPosition = new kakao.maps.LatLng(result[i].y, result[i].x); // 마커가 표시될 위치입니다
+            // var fmarker = new kakao.maps.Marker({
+            //   map: _this.map,
+            //   position: markerPosition,
+            //   image: markerImage, // 마커이미지 설정
+            // });
+            // facilities.push(fmarker);
+            facilities.push(
+              new kakao.maps.Marker({
+                map: _this.map,
+                position: markerPosition,
+                image: markerImage, // 마커이미지 설정
+              })
+            );
+            //fmarker.setMap(_this.map);
+            //  facilities[i].setMap(_this.map);
+          }
+        }
+      };
+      places.categorySearch(this.options[si].target, callback, {
+        location: new kakao.maps.LatLng(markerlat[index], markerlng[index]),
+        radius: 200,
+      });
+    },
     initMap() {
       var container = document.getElementById('map');
-      var options = { center: new kakao.maps.LatLng(37.4815193, 127.0379689), level: 11 };
+      let options = { center: new kakao.maps.LatLng(37.4815193, 127.0379689), level: 11 };
       this.map = new kakao.maps.Map(container, options); //마커추가하려면 객체를 아래와 같이 하나 만든다.
       //  new kakao.maps.Map(container);
       //      var marker = new kakao.maps.Marker({ position: map.getCenter() });
     },
     pointMaker() {
+      var _this = this;
       for (let i = 0; i < marker.length; i++) {
         marker[i].setMap(null);
       }
+      for (let i = 0; i < facilities.length; i++) {
+        facilities[i].setMap(null);
+      }
+      facilities = [];
       marker = [];
+      markerlat = [];
+      markerlng = [];
       let lat = 37.56605862636895;
       let lng = 126.98020317219742;
       if (this.housedeals && this.housedeals.length > 0) {
@@ -99,31 +170,22 @@ export default {
             title: this.housedeals[i].aptname,
           })
         );
-        // overlay.push(
-        //   new kakao.maps.CustomOverlay({
-        //     content:
-        //       '<div class="wrap">' +
-        //       '    <div class="info">' +
-        //       '        <div class="title">' +
-        //       '            카카오 스페이스닷원' +
-        //       '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-        //       '        </div>' +
-        //       '        <div class="body">' +
-        //       '            <div class="desc">' +
-        //       '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
-        //       '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-        //       '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-        //       '            </div>' +
-        //       '        </div>' +
-        //       '    </div>' +
-        //       '</div>',
-        //     map: this.map,
-        //     position: marker[i].getPosition(),
-        //   })
-        // );
-        // kakao.maps.event.addListener(marker[i], 'click', function() {
-        //   overlay[i].setMap(map);
-        // });
+        markerlat.push(this.housedeals[i].lat);
+        markerlng.push(this.housedeals[i].lng);
+      }
+      for (let i = 0; i < marker.length; i++) {
+        kakao.maps.event.addListener(marker[i], 'click', function() {
+          _this.markerClick(i);
+        });
+      }
+    },
+    markerClick(index) {
+      for (let i = 0; i < facilities.length; i++) {
+        facilities[i].setMap(null);
+      }
+      facilities = [];
+      for (let i = 0; i < this.selected.length; i++) {
+        this.getFacilities(this.selected[i], index);
       }
     },
     addScript() {
@@ -131,17 +193,19 @@ export default {
       script.onload = () => kakao.maps.load(this.initMap);
       script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=29c19b3dda898f4062f070cabd9f2ab1';
       document.head.appendChild(script);
+
+      const script1 = document.createElement('script'); /* global kakao */
+      script1.src =
+        'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=29c19b3dda898f4062f070cabd9f2ab1&libraries=LIBRARY';
+      document.head.appendChild(script1);
+      const script2 = document.createElement('script'); /* global kakao */
+      script2.src =
+        'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=29c19b3dda898f4062f070cabd9f2ab1&libraries=services';
+      document.head.appendChild(script2);
     },
     makeMap() {
       var _this = this;
       window.kakao && window.kakao.maps ? _this.initMap() : _this.addScript();
-      /*  return new Promise(function(resolve) {
-        _this.$store.dispatch('getAllHouseDeal').then(function() {
-          console.log('get:', _this.$store.getters.housedeals);
-          _this.housedeals = _this.$store.getters.housedeals;
-
-        });
-      });*/
     },
     async searchHouseDeals() {
       console.log('search');
@@ -151,8 +215,6 @@ export default {
       if (result) {
         _this.housedeals = _this.$store.getters.housedeals;
         _this.pointMaker();
-        //  document.querySelector('#sidebar-right').style.display = '';
-        //  document.querySelector('#sidebar-1').style.display = 'none';
         this.rsidebar = true;
         this.lsidebar = false;
       } else {
