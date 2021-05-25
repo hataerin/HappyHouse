@@ -14,13 +14,15 @@ import MapNavbar from './layout/MapNavbar.vue';
 //import { ElNotificationComponent } from 'element-ui/types/notification';
 import Notice from './pages/Notice.vue';
 import ChangeInfo from './pages/ChangeInfo.vue';
-import VideoChat from './pages/VideoChat.vue';
-import VideoLogin from './pages/auth/Login.vue';
 
 import Qna from './pages/QnA.vue';
 import NoticeDetail from './pages/NoticeDetail.vue';
 import QnaDetail from './pages/QnaDetail.vue';
 import NoticeWrite from './pages/NoticeWrite.vue';
+import Video from './pages/Video.vue';
+import {
+  CometChatUI
+} from "./cometchat-pro-vue-ui-kit/";
 import QnaWrite from './pages/QnaWrite.vue';
 Vue.use(Router);
 
@@ -164,24 +166,19 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-    // {
-    //   path: '/videoChat',
-    //   name: 'videoChat',
-    //   components: { default: VideoChat, header: MainNavbar, footer: MainFooter },
-    //   props: {
-    //     header: { colorOnScroll: 400 },
-    //     footer: { backgroundColor: 'black' },
-    //   },
-    // },
-    // {
-    //   path: '/login',
-    //   name: 'login',
-    //   components: { default: VideoLogin, header: MainNavbar, footer: MainFooter },
-    //   props: {
-    //     header: { colorOnScroll: 400 },
-    //     footer: { backgroundColor: 'black' },
-    //   },
-    // },
+    {
+      path: '/video',
+      name: 'video',
+      components: { default: Video, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: "/embedded-app",
+      component: CometChatUI
+    },
   ],
   scrollBehavior: (to) => {
     if (to.hash) {
