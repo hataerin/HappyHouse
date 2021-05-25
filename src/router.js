@@ -19,6 +19,10 @@ import Qna from './pages/QnA.vue';
 import NoticeDetail from './pages/NoticeDetail.vue';
 import QnaDetail from './pages/QnaDetail.vue';
 import NoticeWrite from './pages/NoticeWrite.vue';
+import Video from './pages/Video.vue';
+import {
+  CometChatUI
+} from "./cometchat-pro-vue-ui-kit/";
 Vue.use(Router);
 
 export default new Router({
@@ -152,7 +156,19 @@ export default new Router({
         footer: { backgroundColor: 'black' },
       },
     },
-   
+    {
+      path: '/video',
+      name: 'video',
+      components: { default: Video, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
+    },
+    {
+      path: "/embedded-app",
+      component: CometChatUI
+    },
   ],
   scrollBehavior: (to) => {
     if (to.hash) {
