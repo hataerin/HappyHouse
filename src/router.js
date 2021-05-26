@@ -20,9 +20,8 @@ import NoticeDetail from './pages/NoticeDetail.vue';
 import QnaDetail from './pages/QnaDetail.vue';
 import NoticeWrite from './pages/NoticeWrite.vue';
 import Video from './pages/Video.vue';
-import {
-  CometChatUI
-} from "./cometchat-pro-vue-ui-kit/";
+import VideoBtn from './layout/videoBtn.vue';
+import { CometChatUI } from './cometchat-pro-vue-ui-kit/';
 import QnaWrite from './pages/QnaWrite.vue';
 Vue.use(Router);
 
@@ -114,7 +113,7 @@ export default new Router({
     {
       path: '/',
       name: 'landing',
-      components: { default: Landing, header: MainNavbar, footer: MainFooter },
+      components: { default: Landing, header: MainNavbar, footer: MainFooter, btn: VideoBtn },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
@@ -176,8 +175,8 @@ export default new Router({
       },
     },
     {
-      path: "/embedded-app",
-      component: CometChatUI
+      path: '/embedded-app',
+      component: CometChatUI,
     },
   ],
   scrollBehavior: (to) => {
