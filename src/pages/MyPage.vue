@@ -90,14 +90,13 @@
             alt="Card image cap"
           />
           <div>
-            <h4 class="card-title" style="font-weight: bold;">{{loan.name}}</h4>
-            <p class="card-text">{{loan.description}}</p>
+            <h4 class="card-title" style="font-weight: bold;">{{ loan.name }}</h4>
+            <p class="card-text">{{ loan.description }}</p>
             <div style="text-align: left;">
               <strong>대출대상</strong>
-              {{loan.object_description}}
-              <br /><strong>대출금리</strong> {{loan.rate}} 
-              <br /><strong>대출한도</strong> {{loan.limit}} 
-              <br /><strong>대출기간</strong> {{loan.term}} 
+              {{ loan.object_description }}
+              <br /><strong>대출금리</strong> {{ loan.rate }} <br /><strong>대출한도</strong> {{ loan.limit }}
+              <br /><strong>대출기간</strong> {{ loan.term }}
             </div>
             <br /><n-button type="primary" @click="goLoanSite(loan.url)">자세히 보기</n-button>
           </div>
@@ -134,16 +133,16 @@ export default {
     [Button.name]: Button,
   },
   created() {
-    // axios
-    //   .get(addr + '/member/info')
-    //   .then(() => {})
-    //   .catch(() => {
-    //     this.$store.dispatch('logout').then(() => {
-    //       alert('로그인 후 사용하세요.');
-    //       this.$router.replace('/login');
-    //       //     this.$router.push({ path: '/' });
-    //     });
-    //   });
+    axios
+      .get(addr + '/member/info')
+      .then(() => {})
+      .catch(() => {
+        this.$store.dispatch('logout').then(() => {
+          alert('로그인 후 사용하세요.');
+          this.$router.replace('/login');
+          //     this.$router.push({ path: '/' });
+        });
+      });
   },
   methods: {
     goChangeInfo() {

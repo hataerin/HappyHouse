@@ -39,7 +39,7 @@
           <p>
             <b-container>
               <b-row v-for="(housedeal, index) in housedeals" :key="index">
-                <div>
+                <div :id="index">
                   <b-card>
                     <div>아파트 이름 : {{ housedeal.aptname }}</div>
                     <div>계약년월일: {{ housedeal.dealyearmonth }}{{ housedeal.dealday }}</div>
@@ -66,6 +66,7 @@ var marker = [];
 var facilities = [];
 var markerlat = [];
 var markerlng = [];
+var prev;
 export default {
   data() {
     return {
@@ -125,6 +126,7 @@ export default {
                 image: markerImage, // 마커이미지 설정
               })
             );
+
             //fmarker.setMap(_this.map);
             //  facilities[i].setMap(_this.map);
           }
@@ -134,6 +136,17 @@ export default {
         location: new kakao.maps.LatLng(markerlat[index], markerlng[index]),
         radius: 200,
       });
+      if (prev != null) {
+        document.getElementById(prev).classList.remove('selected');
+        //  document.getElementById(prev).removeAttribute('selected');
+      }
+      document.getElementById(index).scrollIntoView();
+      document.getElementById(index).classList.add('selected');
+      let lat = this.housedeals[index].lat;
+      let lng = this.housedeals[index].lng;
+      this.map.setCenter(new kakao.maps.LatLng(lat, lng));
+      prev = index;
+      this.map.setLevel(4);
     },
     initMap() {
       var container = document.getElementById('map');
@@ -230,5 +243,8 @@ export default {
   z-index: 100;
   top: 70px;
   left: 20px;
+}
+.selected {
+  border: 3px green solid;
 }
 </style>
