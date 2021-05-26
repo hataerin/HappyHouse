@@ -13,7 +13,7 @@
     </div>
 
     <!------------------------------------------------------->
-    <div style="margin-top:40px;margin-bottom:40px;">
+    <div style="margin-top:40px;margin-bottom:40px;" >
       <div class="ml-auto mr-auto text-center">
         <h2>공지 사항</h2>
         <n-button type="primary" v-if="admin == 0" @click="goWrite">글쓰기</n-button>
