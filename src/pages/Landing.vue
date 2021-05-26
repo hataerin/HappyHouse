@@ -9,7 +9,7 @@
           <h1 class="title">찰떡하우스</h1>
           <br /><br /><br />
           <div>
-            <n-button type="primary" round block size="sm" style="font-size : 30px;">찾아보기</n-button>
+            <n-button type="primary" round block size="sm" style="font-size : 30px;" >찾아보기</n-button>
           </div>
         </div>
       </div>
@@ -25,30 +25,7 @@
         </div>
         <div class="separator separator-primary"></div>
         <div class="section-story-overview">
-          <div class="row">
-            <div class="col-md-6">
-              <div
-                class="image-container image-right"
-                style="background-image: url('https://cuttingedgepr.com/wp-content/uploads/2015/02/Survey-online.-Illustration-with-two-characters-annoting-page-on-laptop.jpg')"
-              ></div>
-            </div>
-            <div class="col-md-6">
-              <br /><br /><br /><br /><br /><br />
-              <h3 style="font-weight: 900;">
-                1. 설문조사를 시작하세요
-              </h3>
-              <p style="font-size: 20px;">
-                당신의 선호도, 라이프스타일, 직업 그리고 예산에 관한 몇가지 질문에 답해 줌으로써, 우리는 당신에 대해서
-                더 잘 알게 될것입니다.
-              </p>
-              <div>
-                <div class="button-container">
-                  <a href="#button" class="btn btn-simple btn-round btn-lg">바로가기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          
           <div class="row">
             <div class="col-md-6">
               <div
@@ -59,14 +36,14 @@
             <div class="col-md-6">
               <br /><br /><br /><br /><br /><br />
               <h3 style="font-weight: 900;">
-                2. 다양한 주거복지제도를 살펴보세요
+                1. 다양한 주거복지제도를 살펴보세요
               </h3>
               <p style="font-size: 20px;">
                 우리는 당신만 생각하며 당신에게 알맞은 복지제도를 큐레이션 할 것입니다. 더 이상 해당사항이 없는 금융상품
                 등을 찾는데에 시간을 허비하지 마세요
               </p>
               <div class="button-container">
-                <a href="#button" class="btn btn-simple btn-round btn-lg">바로가기</a>
+                <a href="/mypage" class="btn btn-simple btn-round btn-lg">바로가기</a>
               </div>
             </div>
           </div>
@@ -80,11 +57,11 @@
             <div class="col-md-6">
               <br /><br /><br /><br /><br /><br />
               <h3 style="font-weight: 900;">
-                3. 원하는 지역의 매물들을 살펴보세요
+                2. 원하는 지역의 매물들을 살펴보세요
               </h3>
               <p style="font-size: 20px;">
-                원하는 집을 찾기 위한 맞춤검색을 제공합니다. 가격, 구조, 층수등 상세 정보는 물론 역세권, 학세권,
-                숲세권까지 지도에서 매물정보를 한눈에 확인할 수 있습니다.
+                원하는 집을 찾기 위한 맞춤검색을 제공합니다. 
+                가격, 구조, 층수등 상세 정보는 물론 카페, 마트, 주유소 등 다양한 편의시설을 지도에서 매물정보와 함께 한눈에 확인할 수 있습니다.
               </p>
               <div class="button-container">
                 <a href="/map" class="btn btn-simple btn-round btn-lg">바로가기</a>
@@ -101,14 +78,14 @@
             <div class="col-md-6">
               <br /><br /><br /><br /><br /><br />
               <h3 style="font-weight: 900;">
-                4. 마음에 드는 집은 실시간으로!
+                3. 마음에 드는 집은 실시간으로!
               </h3>
               <p style="font-size: 20px;">
                 먼 곳까지 발품팔아 확인하러 갈 필요가 없습니다! 집주인과 시간만 맞춘다면 부동산 없이 마음 편하게
                 아무때나 실시간으로 매물을 확인할 수 있습니다.
               </p>
               <div class="button-container">
-                <a href="#button" class="btn btn-simple btn-round btn-lg">바로가기</a>
+                <a href="/video" class="btn btn-simple btn-round btn-lg">바로가기</a>
               </div>
             </div>
           </div>
@@ -123,7 +100,7 @@
             <div class="col-md-6">
               <br /><br /><br /><br /><br /><br />
               <h3 style="font-weight: 900;">
-                5. 더 궁금하신 점이 있다면?
+                4. 더 궁금하신 점이 있다면?
               </h3>
               <p style="font-size: 20px;">
                 언제든지 궁금하신 사항이 생긴다면 자주하는 질문 게시판을 방문해주세요. 자주 묻는 질문들을 친절하게
@@ -134,17 +111,40 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="section section-team text-center">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="image-container image-right"
+                style="background-image: url('https://img.freepik.com/free-vector/team-concept-illustration_114360-678.jpg?size=626&ext=jpg&ga=GA1.2.864507418.1615593600')"
+              ></div>
+            </div>
+            <div class="col-md-6">
+              <br /><br /><br /><br /><br /><br />
+              <h3 style="font-weight: 900;">
+                5. 찰떡하우스 창조주 보러가기
+              </h3>
+              <p style="font-size: 20px;">
+                나만의 찰떡 같은 집을 찾아주는 찰떡하우스!!! 누가만들었는지 궁금하시다구요?
+              </p>
+              <div class="button-container">
+                <a href="/developer" class="btn btn-simple btn-round btn-lg">바로가기</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="section section-team text-center">
       <div class="container">
-        <h2 class="title">Here is our team</h2>
+
+        <h2 class="title">찰떡하우스 사장님들</h2>
         <div class="team">
           <div class="row">
             <div class="col-md-6">
               <div class="team-player">
-                <img src="img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" />
+                <img src="https://pics.freeicons.io/uploads/icons/png/2985742661548234958-512.png" 
+                alt="Thumbnail Image" 
+                class="rounded-circle img-fluid img-raised" />
                 <h4 class="title">최승재</h4>
                 <p class="category text-primary">Fullstack Developer</p>
                 <p class="description">
@@ -168,6 +168,11 @@
         </div>
       </div>
     </div>
+
+        </div>
+      </div>
+    </div>
+    
   </div>
 </template>
 <script>
