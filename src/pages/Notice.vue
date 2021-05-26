@@ -48,7 +48,6 @@ export default {
       .then((response) => {
         _this.items = [];
         for (let i = 0; i < response.data.length; i++) {
-          console.log('asd');
           _this.items.push({
             no: response.data[i].noticeno,
             title: response.data[i].subject,
