@@ -14,7 +14,7 @@
 
     <!------------------------------------------------------->
     <div style="margin-top:40px;margin-bottom:50px;">
-      <div class="col-md-8 ml-auto mr-auto text-center">
+      <div class="ml-auto mr-auto text-center">
         <h2>QnA</h2>
         <n-button type="primary" v-if="admin == 0 || admin == 1" @click="goWrite">글쓰기</n-button>
         <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
