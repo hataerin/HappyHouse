@@ -14,7 +14,7 @@
 
     <!------------------------------------------------------->
 
-    <div class="col-md-8 ml-auto mr-auto text-center">
+    <div class="ml-auto mr-auto text-center">
       <b-form @submit="onSubmit" @reset="onReset">
         <b-form-group id="input-group-0" label="아이디:" label-for="input-0">
           <b-form-input
@@ -95,37 +95,6 @@
       </b-form>
     </div>
     <!------------------------------->
-    <div class="section section-team text-center">
-      <div class="container">
-        <h2 class="title">Here is our team</h2>
-        <div class="team">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="team-player">
-                <img src="img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" />
-                <h4 class="title">최승재</h4>
-                <p class="category text-primary">Fullstack Developer</p>
-                <p class="description">
-                  You can write here details about one of your team members. You can give more details about what they
-                  do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="team-player">
-                <img src="img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" />
-                <h4 class="title">하태린</h4>
-                <p class="category text-primary">Fullstack Developer</p>
-                <p class="description">
-                  You can write here details about one of your team members. You can give more details about what they
-                  do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
@@ -176,10 +145,9 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       if (this.idValidation && this.pwdValidation) {
-        alert(JSON.stringify(this.form));
         let result = this.$store.dispatch('addUser', this.form);
         if (result) {
-          alert(result);
+          alert('회원가입 성공');
           this.$router.replace('/login');
         }
       } else {

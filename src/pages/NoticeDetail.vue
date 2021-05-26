@@ -16,15 +16,17 @@
 
     <div class="col-md-8 ml-auto mr-auto text-center" style="height:500px;">
       <div>
-        <div>QnA {{ notice.noticeno }} {{ notice.subject }}</div>
-        <div>{{ notice.userid }} | {{ notice.regtime }}</div>
-        <div>{{ notice.content }}</div>
+        <div>글 번호 : {{ notice.noticeno }}</div>
+        <div>글 제몰 : {{ notice.subject }}</div>
+        <div>글 작성자 : {{ notice.userid }}</div>
+        <div>글 작성일 : {{ notice.regtime }}</div>
+        <div>글 내용 : {{ notice.content }}</div>
         <template v-if="user.admin == 0 || notice.userid == user.id">
           <n-button type="primary" @click="goUpdateNotice">수정</n-button>
           <n-button type="default" @click="deleteNotice">삭제</n-button>
         </template>
         <div>
-          <n-button type="primary" @click="goList">수정</n-button>
+          <n-button type="primary" @click="goList">목록</n-button>
         </div>
       </div>
     </div>
@@ -68,7 +70,7 @@ export default {
         });
     },
     goList() {
-      this.$route.replace('/notice');
+      this.$router.replace('/notice');
     },
   },
 };

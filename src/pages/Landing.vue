@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="page-header page-header-small">
-      <parallax class="page-header-image" style="background-image: url('https://wallpaperaccess.com/full/85869.jpg')"/>
-    
+      <parallax class="page-header-image" style="background-image: url('https://wallpaperaccess.com/full/85869.jpg')" />
+
       <div class="content-center">
         <div class="container">
           <h2 class="title">당신에게 꼭 맞는 찰떡같은 집</h2>
@@ -17,7 +17,7 @@
     <div class="section section-about-us">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ml-auto mr-auto text-center">
+          <div class="ml-auto mr-auto text-center">
             <h2 class="title">오늘도 집을 찾는 당신에게 가장 확실한 방법을 제시합니다.</h2>
             <h5 class="description">우리에겐 당신을 현혹시키는 그 어떤 사진도 없습니다.</h5>
             <h5 class="description">당신이 할 일은 오로지 설문조사 한 가지 입니다.</h5>
@@ -190,4 +190,4 @@ export default {
   },
 };
 </script>
-<style></style>
+<style scoped></style>
