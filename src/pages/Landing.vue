@@ -112,62 +112,41 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div
-                class="image-container image-right"
-                style="background-image: url('https://img.freepik.com/free-vector/team-concept-illustration_114360-678.jpg?size=626&ext=jpg&ga=GA1.2.864507418.1615593600')"
-              ></div>
-            </div>
-            <div class="col-md-6">
-              <br /><br /><br /><br /><br /><br />
-              <h3 style="font-weight: 900;">
-                5. 찰떡하우스 창조주 보러가기
-              </h3>
-              <p style="font-size: 20px;">
-                나만의 찰떡 같은 집을 찾아주는 찰떡하우스!!! 누가만들었는지 궁금하시다구요?
-              </p>
-              <div class="button-container">
-                <a href="/developer" class="btn btn-simple btn-round btn-lg">바로가기</a>
-              </div>
-            </div>
-          </div>
-
 
           <div class="section section-team text-center">
-      <div class="container">
+            <div class="container">
 
-        <h2 class="title">찰떡하우스 사장님들</h2>
-        <div class="team">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="team-player">
-                <img src="https://pics.freeicons.io/uploads/icons/png/2985742661548234958-512.png" 
-                alt="Thumbnail Image" 
-                class="rounded-circle img-fluid img-raised" />
-                <h4 class="title">최승재</h4>
-                <p class="category text-primary">Fullstack Developer</p>
-                <p class="description">
-                  You can write here details about one of your team members. You can give more details about what they
-                  do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="team-player">
-                <img src="img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" />
-                <h4 class="title">하태린</h4>
-                <p class="category text-primary">Fullstack Developer</p>
-                <p class="description">
-                  You can write here details about one of your team members. You can give more details about what they
-                  do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.
-                </p>
+              <h2 class="title">찰떡하우스 만든사람</h2>
+              <div class="team">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="team-player">
+                      <img src="https://pics.freeicons.io/uploads/icons/png/2985742661548234958-512.png" 
+                      alt="Thumbnail Image" 
+                      class="rounded-circle img-fluid img-raised" />
+                      <h4 class="title">최승재</h4>
+                      <p class="category text-primary">Fullstack Developer</p>
+                      <p class="description">
+                        <a>-SSAFY 5기 대전 4반</a><br/>
+                        <a>-비디오, 채팅 기능</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="team-player">
+                      <img src="https://pics.freeicons.io/uploads/icons/png/13390292491548234967-512.png" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" />
+                      <h4 class="title">하태린</h4>
+                      <p class="category text-primary">Fullstack Developer</p>
+                      <p class="description">
+                        <a>-대출상품 추천 기능</a><br/>
+                        <a>-비디오, 채팅 기능</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
         </div>
       </div>
