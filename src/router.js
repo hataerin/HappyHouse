@@ -132,8 +132,7 @@ export default new Router({
       path: '/map',
       name: 'map',
       components: {
-        default: Map,
-        header: MapNavbar,
+        default: Map, header: MainNavbar,
       },
       props: {
         header: { colorOnScroll: 400 },
@@ -177,7 +176,12 @@ export default new Router({
     },
     {
       path: "/embedded-app",
-      component: CometChatUI
+      name: "/embedded-app",
+      components: { default:  CometChatUI, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' },
+      },
     },
   ],
   scrollBehavior: (to) => {

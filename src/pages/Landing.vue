@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="page-header page-header-small">
-      <parallax class="page-header-image" style="background-image: url('https://wallpaperaccess.com/full/85869.jpg')">
-      </parallax>
+      <parallax class="page-header-image" style="background-image: url('https://wallpaperaccess.com/full/85869.jpg')"/>
+    
       <div class="content-center">
         <div class="container">
           <h2 class="title">당신에게 꼭 맞는 찰떡같은 집</h2>
