@@ -16,13 +16,18 @@
 
     <div class="col-md-8 ml-auto mr-auto text-center" style="height:500px;">
       <div>
-        <div>{{ qna.qnano }}</div>
-        <div>{{ qna.subject }}</div>
-        <div>{{ qna.content }}</div>
+        <div>글 번호 : {{ qna.qnano }}</div>
+        <div>글 제몰 : {{ qna.subject }}</div>
+        <div>글 작성자 : {{ qna.userid }}</div>
+        <div>글 작성일 : {{ qna.regtime }}</div>
+        <div>글 내용 : {{ qna.content }}</div>
         <template v-if="user.admin == 0 || qna.userid == user.id">
           <n-button type="primary" @click="goUpdateQna">수정</n-button>
           <n-button type="default" @click="deleteQna">삭제</n-button>
         </template>
+      </div>
+      <div>
+        <n-button type="primary" @click="goList">목록</n-button>
       </div>
     </div>
     <!------------------------------->
@@ -61,6 +66,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    goList() {
+      this.$router.replace('/qna');
     },
   },
 };

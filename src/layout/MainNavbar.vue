@@ -42,11 +42,19 @@
         </li>
 
         <li class="nav-item" v-if="!user">
+          <router-link v-popover:popover1 class="navbar-brand" to="/video" style=" font-size: 20px;">
+            <i class="now-ui-icons education_paper"></i>
+            <p>비디오</p>
+          </router-link>
+        </li>
+
+        <li class="nav-item" v-if="!user">
           <router-link v-popover:popover1 class="navbar-brand" to="/login" style=" font-size: 20px;">
             <i class="now-ui-icons users_circle-08"></i>
             <p>로그인</p>
           </router-link>
         </li>
+
         <li class="nav-item" v-if="!user">
           <router-link v-popover:popover1 class="navbar-brand" to="/signup" style=" font-size: 20px;">
             <i class="now-ui-icons users_single-02"></i>
@@ -109,15 +117,5 @@ export default {
 <style scoped>
 #logoutBtn {
   cursor: pointer;
-}
-.VideoBtn {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
 </style>
