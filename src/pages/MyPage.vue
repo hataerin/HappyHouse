@@ -190,4 +190,11 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+  .form-control {
+    font-size: 30px;
+  }
+  label {
+    font-size: 20px;
+  }
+</style>
