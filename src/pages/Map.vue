@@ -34,12 +34,13 @@
       <div style="display:none;">
         <b-button v-b-toggle.sidebar-right id="houseDealResult">Toggle Sidebar</b-button>
       </div>
-      <b-sidebar id="sidebar-right" title="결과" right shadow v-model="rsidebar">
+      <b-sidebar id="sidebar-right" title="결과" right shadow width="760px" v-model="rsidebar">
         <div class="px-3 py-2">
           <p>
             <b-container>
               <b-row v-for="(housedeal, index) in housedeals" :key="index">
                 <div :id="index">
+                  <div class="roadview"></div>
                   <b-card>
                     <div>아파트 이름 : {{ housedeal.aptname }}</div>
                     <div>계약년월일: {{ housedeal.dealyearmonth }}{{ housedeal.dealday }}</div>
@@ -48,6 +49,9 @@
                     <div v-if="housedeal.type == 1">아파트(매매)</div>
                     <div v-else-if="housedeal.type == 2">연립다세대(매매)</div>
                     <div v-else-if="housedeal.type == 3">오피스텔(매매)</div>
+                    <div>
+                      <b-button id="toggle-btn" @click="toggleModal(index)">크게 보기</b-button>
+                    </div>
                   </b-card>
                 </div>
               </b-row>
@@ -58,6 +62,22 @@
 
       <div id="map" style="width: 100%; height: 100%"></div>
     </div>
+
+    <b-modal id="modal-xl" size="xl" ref="my-modal" hide-footer title="Using Component Methods">
+      <div class="d-block text-center">
+        <h3>Hello From My Modal!</h3>
+        <div id="modalroadview"></div>
+        <div @click="showModelroadview">로드 뷰</div>
+        <div>아파트 이름 : {{ selectedHouse.aptname }}</div>
+        <div>계약년월일: {{ selectedHouse.dealyearmonth }}{{ selectedHouse.dealday }}</div>
+        <div>시도군 : {{ selectedHouse.sidogun }}</div>
+        <div>도로명 : {{ selectedHouse.roadname }}</div>
+        <div v-if="selectedHouse.type == 1">아파트(매매)</div>
+        <div v-else-if="selectedHouse.type == 2">연립다세대(매매)</div>
+        <div v-else-if="selectedHouse.type == 3">오피스텔(매매)</div>
+      </div>
+      <!--  <b-button class="mt-3" variant="outline-warning" block @click="toggleModal(-1)">Toggle Me</b-button>-->
+    </b-modal>
   </div>
 </template>
 
@@ -67,9 +87,11 @@ var facilities = [];
 var markerlat = [];
 var markerlng = [];
 var prev;
+
 export default {
   data() {
     return {
+      selectedHouse: '',
       housedeals: '',
       searchtext: '',
       map: '',
@@ -85,6 +107,9 @@ export default {
         { text: '카페', value: '4', target: 'CE7', dataorder: '4' },
         { text: '편의점', value: '5', target: 'CS2', dataorder: '5' },
       ],
+      modals: {
+        classic: false,
+      },
     };
   },
   created() {
@@ -94,6 +119,30 @@ export default {
     this.makeMap();
   },
   methods: {
+    toggleModal(index) {
+      // We pass the ID of the button that we want to return focus to
+      // when the modal has hidden
+      this.$refs['my-modal'].toggle('#toggle-btn');
+      this.selectedHouse = this.housedeals[index];
+      console.log(this.selectedHouse);
+    },
+    showModelroadview() {
+      var modalroadviewContainer = document.getElementById('modalroadview');
+      //로드뷰를 표시할 div
+      var modalroadview = new kakao.maps.Roadview(modalroadviewContainer); //로드뷰 객체
+      var modalroadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+
+      var modalposition = new kakao.maps.LatLng(this.selectedHouse.lat, this.selectedHouse.lng);
+
+      // 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+      modalroadviewClient.getNearestPanoId(modalposition, 50, function(modalpanoId) {
+        modalroadview.setPanoId(modalpanoId, modalposition); //panoId와 중심좌표를 통해 로드뷰 실행
+      });
+    },
+
+    makeModal() {
+      console.log('asd');
+    },
     getFacilities(si, index) {
       var _this = this;
       console.log('getFacilities');
@@ -137,16 +186,30 @@ export default {
         radius: 200,
       });
       if (prev != null) {
-        document.getElementById(prev).classList.remove('selected');
+        let removetarget = document.getElementById(prev);
+        removetarget.classList.remove('selected');
+        removetarget.querySelector('.roadview').classList.remove('selectedroadview');
         //  document.getElementById(prev).removeAttribute('selected');
       }
-      document.getElementById(index).scrollIntoView();
+
       document.getElementById(index).classList.add('selected');
       let lat = this.housedeals[index].lat;
       let lng = this.housedeals[index].lng;
       this.map.setCenter(new kakao.maps.LatLng(lat, lng));
       prev = index;
       this.map.setLevel(4);
+      var roadviewContainer = document.querySelector('.selected').querySelector('.roadview'); //로드뷰를 표시할 div
+      roadviewContainer.classList.add('selectedroadview');
+      var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
+      var roadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+
+      var position = new kakao.maps.LatLng(lat, lng);
+
+      // 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+      roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+        roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+      });
+      document.getElementById(index).scrollIntoView();
     },
     initMap() {
       var container = document.getElementById('map');
@@ -246,5 +309,15 @@ export default {
 }
 .selected {
   border: 3px green solid;
+}
+.selectedroadview {
+  width: 100%;
+  height: 600px;
+}
+#modalroadview {
+  z-index: 100;
+  position: absolute;
+  top: 500px;
+  left: 500px;
 }
 </style>

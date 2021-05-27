@@ -6,7 +6,6 @@ import signup from './pages/signup.vue';
 import Login from './pages/Login.vue';
 import Profile from './pages/Profile.vue';
 import MyPage from './pages/MyPage.vue';
-import Developer from './pages/Developer.vue';
 import Likes from './pages/Likes.vue';
 import MainNavbar from './layout/MainNavbar.vue';
 import MainFooter from './layout/MainFooter.vue';
@@ -21,7 +20,6 @@ import NoticeDetail from './pages/NoticeDetail.vue';
 import QnaDetail from './pages/QnaDetail.vue';
 import NoticeWrite from './pages/NoticeWrite.vue';
 import Video from './pages/Video.vue';
-import VideoBtn from './layout/videoBtn.vue';
 import { CometChatUI } from './cometchat-pro-vue-ui-kit/';
 import QnaWrite from './pages/QnaWrite.vue';
 Vue.use(Router);
@@ -114,7 +112,7 @@ export default new Router({
     {
       path: '/',
       name: 'landing',
-      components: { default: Landing, header: MainNavbar, footer: MainFooter, btn: VideoBtn },
+      components: { default: Landing, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
@@ -161,15 +159,6 @@ export default new Router({
       path: '/mypage',
       name: 'mypage',
       components: { default: MyPage, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: 'black' },
-      },
-    },
-    {
-      path: '/developer',
-      name: 'developer',
-      components: { default: Developer, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' },
