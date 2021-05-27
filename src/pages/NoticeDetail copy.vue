@@ -14,38 +14,37 @@
 
     <!------------------------------------------------------->
 
-    <div class="col-md-8 ml-auto mr-auto text-center" style="margin-left:400px;margin-right:150px;margin-top:50px;">
+    <div class="col-md-8 ml-auto mr-auto text-center" style="height:550px;">
       <div>
         <b-table-simple caption-top responsive>
           <b-tbody>
             <b-tr>
-              <b-th style="font-size: 1.3em;color:white;">111111111111</b-th>
-              <b-th style="font-size: 1.3em;color:white;">111111111111</b-th>
-              <b-th style="font-size: 1.3em;color:white;">111111111111</b-th>
-              <b-th style="font-size: 1.3em;color:white;">111111111111</b-th>
+              <b-th colspan="2">글 번호</b-th>
+              <b-td colspan="3">{{ notice.noticeno }}</b-td>
             </b-tr>
             <b-tr>
-              <b-th colspan="1" style="font-size: 1.3em;">글 번호</b-th>
-              <b-td colspan="3" style="font-size: 1.3em;">{{ notice.noticeno }}</b-td>
+              <b-th colspan="2">글 제목</b-th>
+              <b-td colspan="3">{{ notice.subject }}</b-td>
             </b-tr>
             <b-tr>
-              <b-th colspan="1" style="font-size: 1.3em;">글 제목</b-th>
-              <b-td colspan="3" style="font-size: 1.3em;">{{ notice.subject }}</b-td>
+              <b-th colspan="2">글 작성자</b-th>
+              <b-td colspan="3">{{ notice.userid }}</b-td>
             </b-tr>
             <b-tr>
-              <b-th colspan="1" style="font-size: 1.3em;">글 작성자</b-th>
-              <b-td colspan="3" style="font-size: 1.3em;">{{ notice.userid }}</b-td>
+              <b-th colspan="2">글 작성일</b-th>
+              <b-td colspan="3">{{ notice.regtime }}</b-td>
             </b-tr>
             <b-tr>
-              <b-th colspan="1" style="font-size: 1.3em;">글 작성일</b-th>
-              <b-td colspan="3" style="font-size: 1.3em;">{{ notice.regtime }}</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th colspan="1" style="font-size: 1.3em;">글 내용</b-th>
-              <b-td colspan="3" style="font-size: 1.3em;">{{ notice.content }}</b-td>
+              <b-th colspan="2">글 내용</b-th>
+              <b-td colspan="3">{{ notice.content }}</b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
+        <div>글 번호 : {{ notice.noticeno }}</div>
+        <div>글 제몰 : {{ notice.subject }}</div>
+        <div>글 작성자 : {{ notice.userid }}</div>
+        <div>글 작성일 : {{ notice.regtime }}</div>
+        <div>글 내용 : {{ notice.content }}</div>
         <template v-if="user.admin == 0 || notice.userid == user.id">
           <n-button type="primary" @click="goUpdateNotice">수정</n-button>
           <n-button type="default" @click="deleteNotice">삭제</n-button>
