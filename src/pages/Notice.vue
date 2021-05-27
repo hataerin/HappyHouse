@@ -13,11 +13,11 @@
     </div>
 
     <!------------------------------------------------------->
-    <div style="margin-top:40px;margin-bottom:40px;" >
+    <div style="margin-top:40px;margin-bottom:40px;margin-left:150px;margin-right:150px" >
       <div class="ml-auto mr-auto text-center">
         <h2>공지 사항</h2>
         <n-button type="primary" v-if="admin == 0" @click="goWrite">글쓰기</n-button>
-        <b-table striped hover :items="items" @row-clicked="goDetailNotice"></b-table>
+        <b-table striped hover :items="items" @row-clicked="goDetailNotice" style="font-size: 2em;"></b-table>
       </div>
     </div>
     <!------------------------------->
