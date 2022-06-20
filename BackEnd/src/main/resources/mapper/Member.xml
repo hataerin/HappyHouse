@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.mapper.MemberMapper">
+
+	<insert id="insertMember" parameterType="member">
+		insert into member(
+			id, age,pwd, nickname,sex,admin,mbti,job,email
+		) values (
+			#{id}, #{age}, #{pwd}, #{nickname}, #{sex}, #{admin}, #{mbti}, #{job}, #{email}
+		)
+	</insert>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete 
+		  from member
+		 where id = #{id} 
+	</delete>
+	
+		<select id="searchId" resultType="String">
+		select id
+		  from member 
+	</select>
+	
+	<select id="selectMember" parameterType="member" resultType="member">
+		select id, age, pwd, nickname,sex,admin,mbti,job,email
+		  from member
+		 where id = #{id}
+	</select>
+	
+	<select id="selectAllMember" resultType="member">
+		select id, age, pwd, nickname, sex, admin, mbti, job, email , joindate 
+		from member
+	</select>
+	
+	<update id="updateMember" parameterType="member">
+		update member
+		   set age = #{age}, 
+			   pwd = #{pwd}, 
+			   nickname = #{nickname}, 
+			   sex = #{sex}, 
+			   mbti = #{mbti}, 
+			   job = #{job},
+			   email = #{email}
+		 where id = #{id}
+	</update>
+	
+	<select id="loginMember" parameterType="Map" resultType="member">
+		select id, age , pwd, nickname, sex, admin, mbti, job, email, joindate
+		from member
+		where id = #{id} and pwd = #{pwd}
+	</select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+ <mapper namespace="com.ssafy.happyhouse.mapper.LoanMapper">
+ 
+	<select id="getLoan" resultType="Loan">
+		select *
+		from loan 
+		where object_age >= #{age} AND object_income >= #{income} AND object_houseNum >= #{houseNum} AND CAST(object_asset AS FLOAT) >= #{asset}
+	</select>
+
+</mapper>
+

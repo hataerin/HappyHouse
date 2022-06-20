@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.mapper.HouseMapper">
+
+	<select id="searchHouse" parameterType="String" resultType="House">
+		select d.no, d.sidogun , d.aptname,
+		d.area , d. dealyearmonth , d.dealday , d.dealamount, d.floor,
+		d.buildyear, d.roadname, d.type, i.lat, i.lng
+		  from housedeal as d
+		  inner join houseinfo as i
+		  on d.houseinfono = i.no
+		 where i.sidogunroadname like concat (
+		 <foreach item="item" collection="word">
+		 '%',#{item},
+		 </foreach>
+		 '%')
+	</select> 
+	
+	<select id="searchByFavoritesHouse" parameterType="String" resultType="FavoriteHouse">
+		select f.no as `favoriteno` , f.userid , d.no as `no`, d.sidogun , d.aptname,
+		d.area , d. dealyearmonth , d.dealday , d.dealamount, d.floor,
+		d.buildyear, d.roadname, d.type, i.lat, i.lng 
+		  from housedeal as d
+		  
+		  inner join houseinfo as i
+		  on d.houseinfono = i.no
+		  
+		  inner join favorites as f
+		  on d.no = f.housedealno
+		 where f.userid = #{userid}
+	</select>
+	
+	<select id="searchAllHouse" parameterType="String" resultType="House">
+		select d.no, d.sidogun , d.aptname,
+		d.area , d. dealyearmonth , d.dealday , d.dealamount, d.floor,
+		d.buildyear, d.roadname, d.type, i.lat, i.lng
+		  from housedeal as d
+		  inner join houseinfo as i
+		  on d.houseinfono = i.no
+	</select>
+	
+</mapper>

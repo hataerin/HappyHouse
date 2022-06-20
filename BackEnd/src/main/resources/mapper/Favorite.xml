@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.mapper.FavoritesMapper">
+<!-- 
+	public int insertFavorite(Favorite favorite) throws SQLException;
+	public int deleteFavorite(int no) throws SQLException;
+
+ -->
+ 	<insert id="insertFavorite" parameterType="Favorite">
+		insert into favorites (userid,  housedealno)
+		values (#{userid},#{housedealno})
+	</insert>
+	
+ 	<delete id="deleteFavorite" parameterType="int">
+		delete from favorites
+		where no = #{no}
+	</delete>
+</mapper>
